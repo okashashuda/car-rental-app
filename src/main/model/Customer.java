@@ -1,5 +1,6 @@
 package model;
 
+//represents a customer with full name and age
 public class Customer {
 
     //fields

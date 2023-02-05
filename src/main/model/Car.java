@@ -7,11 +7,13 @@ public class Car {
     private String make;
     private String model;
     private int year;
+    private boolean available;
 
-    public Car(String make, String model, int year) {
+    public Car(String make, String model, int year, boolean available) {
         this.make = make;
         this.model = model;
         this.year = year;
+        this.available = available;
     }
 
     //returns car's make
@@ -27,5 +29,13 @@ public class Car {
     //returns car's year
     public int getYear() {
         return year;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = true;
     }
 }
