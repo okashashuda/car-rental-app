@@ -36,6 +36,6 @@ public class Car {
     }
 
     public void setAvailable(boolean available) {
-        this.available = true;
+        this.available = available;
     }
 }
