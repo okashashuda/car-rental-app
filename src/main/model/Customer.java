@@ -3,6 +3,9 @@ package model;
 //represents a customer with full name and age
 public class Customer {
 
+    //constants
+    public static final int MIN_AGE = 18;
+
     //fields
     private String firstName;
     private String lastName;
@@ -30,9 +33,6 @@ public class Customer {
     }
 
     public boolean isValidRenter() {
-        if (age >= 18) {
-            return true;
-        }
-        return false;
+        return age >= MIN_AGE;
     }
 }
