@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 //represents rental with number of days, pickup and drop-off location
 public class Rental {
@@ -14,6 +15,7 @@ public class Rental {
     private LocalDate pickup;
     private LocalDate dropoff;
     private double totalCost;
+    private int numOfDays;
 
     public Rental(Customer customer, Car car, LocalDate pickup, LocalDate dropoff) {
         this.customer = customer;
@@ -22,21 +24,41 @@ public class Rental {
         this.dropoff = dropoff;
     }
 
+    //https://www.baeldung.com/java-string-to-date used for reference
     //return date of pickup in YYYY-MM-DD format
     public LocalDate getPickup() {
         pickup = LocalDate.parse("2023-03-20");
         return pickup;
     }
 
+    //https://www.baeldung.com/java-string-to-date used for reference
     //return date of dropoff in YYYY-MM-DD
     public LocalDate getDropoff() {
         dropoff = LocalDate.parse("2023-03-24");
         return dropoff;
     }
 
+    //https://stackabuse.com/how-to-get-the-number-of-days-between-dates-in-java/ used for reference
+    //return number of days car is being rented
+    public int getNumOfDays(LocalDate pickup, LocalDate dropoff) {
+        numOfDays = (int) ChronoUnit.DAYS.between(pickup, dropoff);
+        return numOfDays += 1;
+    }
 
+    //calculate total cost of rental
     public double totalCost() {
-        return 0; //stub
+        totalCost = numOfDays * COST_PER_DAY;
+        return totalCost;
+    }
+
+    //get customer details
+    public Customer getCustomerInfo() {
+        return customer;
+    }
+
+    //get car details
+    public Car getCarInfo() {
+        return car;
     }
 
 }

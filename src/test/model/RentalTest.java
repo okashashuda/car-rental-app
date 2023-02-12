@@ -5,6 +5,7 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static model.Rental.COST_PER_DAY;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RentalTest {
@@ -27,13 +28,15 @@ public class RentalTest {
     public void testConstructor() {
         //testCustomer already been tested in CustomerTest
         //testCar already been tested in CarTest
-
+        assertEquals(testCustomer, testRental.getCustomerInfo());
+        assertEquals(testCar, testRental.getCarInfo());
         assertEquals(testPickup, testRental.getPickup());
         assertEquals(testDropoff, testRental.getDropoff());
     }
 
     @Test
     public void testTotalCost() {
-        //TODO
+        assertEquals(5, testRental.getNumOfDays(testPickup, testDropoff));
+        assertEquals(testRental.getNumOfDays(testPickup, testDropoff) * COST_PER_DAY, testRental.totalCost());
     }
 }

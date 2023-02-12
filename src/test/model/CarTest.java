@@ -22,6 +22,13 @@ class CarTest {
         assertTrue(testCar.isAvailable());
     }
 
+    @Test
+    public void testSetAvailable() {
+        assertTrue(testCar.isAvailable());
+        testCar.setAvailable(false);
+        assertFalse(testCar.isAvailable());
+    }
+
 
 
 }
