@@ -24,6 +24,23 @@ public class Rental {
         this.dropoff = dropoff;
     }
 
+    //calculate total cost of rental
+    //MODIFIES: this
+    //EFFECTS: calculates total cost of rental by multiplying cost per day by the number of days car is being rented
+    public double totalCost() {
+        totalCost = numOfDays * COST_PER_DAY;
+        return totalCost;
+    }
+
+    //https://stackabuse.com/how-to-get-the-number-of-days-between-dates-in-java/ used for reference
+    //return number of days car is being rented
+    //MODIFIES: this
+    //EFFECTS: calculates the number of days between pickup and dropoff (will be used to calculate total cost)
+    public int getNumOfDays(LocalDate pickup, LocalDate dropoff) {
+        numOfDays = (int) ChronoUnit.DAYS.between(pickup, dropoff);
+        return numOfDays += 1;
+    }
+
     //https://www.baeldung.com/java-string-to-date used for reference
     //return date of pickup in YYYY-MM-DD format
     public LocalDate getPickup() {
@@ -38,19 +55,6 @@ public class Rental {
         return dropoff;
     }
 
-    //https://stackabuse.com/how-to-get-the-number-of-days-between-dates-in-java/ used for reference
-    //return number of days car is being rented
-    public int getNumOfDays(LocalDate pickup, LocalDate dropoff) {
-        numOfDays = (int) ChronoUnit.DAYS.between(pickup, dropoff);
-        return numOfDays += 1;
-    }
-
-    //calculate total cost of rental
-    public double totalCost() {
-        totalCost = numOfDays * COST_PER_DAY;
-        return totalCost;
-    }
-
     //get customer details
     public Customer getCustomerInfo() {
         return customer;
@@ -60,5 +64,4 @@ public class Rental {
     public Car getCarInfo() {
         return car;
     }
-
 }

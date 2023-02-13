@@ -32,6 +32,8 @@ public class Customer {
         return age;
     }
 
+    //returns TRUE if age is greater than minimum required age to rent
+    //EFFECTS: produces TRUE if the person is of at least minimum age to rent, false otherwise.
     public boolean isValidRenter() {
         return age >= MIN_AGE;
     }

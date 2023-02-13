@@ -16,6 +16,14 @@ public class Car {
         this.available = available;
     }
 
+    //if car has been rented, set availability to false
+    //else if still available, set availability to true
+    //MODIFIES: this
+    //EFFECTS: changes setAvailable if car is no longer available to rent
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
     //returns car's make
     public String getMake() {
         return make;
@@ -31,11 +39,8 @@ public class Car {
         return year;
     }
 
+    //returns current availability of car
     public boolean isAvailable() {
         return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
     }
 }

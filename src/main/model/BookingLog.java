@@ -16,33 +16,48 @@ public class BookingLog {
     }
 
     //add new rental to list of bookings
+    //MODIFIES: bookings
+    //EFFECTS: add rental to the end of bookings
+    //         also retrieves position of rental in bookings and creates a bookingID
     public void addRental(Rental rental) {
         bookings.add(rental);
         position = bookings.indexOf(rental); //retrieves index of rental and this represents position in bookings list
+        getBookingID(position);
     }
 
     //remove rental from list of bookings
+    //REQUIRES: bookingID be in the list of bookings
+    //MODIFIES: bookings
+    //EFFECTS: retrieves position from bookingID and removes the rental from bookings at that position
     public void cancelRental(int bookingID) {
-        bookings.remove(bookingID);
+        position = bookingID - 1;
+        bookings.remove(position);
     }
 
     //view rental from list of bookings
+    //REQUIRES: bookingID be in the list of bookings
+    //EFFECTS: retrieves booking based on bookingID and position and displays it for customer to verify
     public Rental viewRental(int bookingID) {
-        return bookings.get(bookingID);
+        position = bookingID - 1;
+        return bookings.get(position);
     }
 
     //edit rental from list of bookings
+    //REQUIRES: bookingID and rental is in the list of bookings
+    //MODIFIES: this
+    //EFFECTS: replaces the updated rental at the given bookingID
     public void editRental(int bookingID, Rental rental) {
-        bookings.set(bookingID, rental);
+        position = bookingID - 1;
+        bookings.set(position, rental);
     }
 
-    //get list of all bookings
+    //return list of all bookings
     public List<Rental> getAllBookings() {
         return bookings;
     }
 
-    //size of booking list
-    public int size() {
+    //return size of booking list
+    public int getSize() {
         return bookings.size();
     }
 
