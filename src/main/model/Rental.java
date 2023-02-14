@@ -57,7 +57,8 @@ public class Rental {
         return dropoff;
     }
 
-
+    //builds a string with all info of the rental
+    //EFFECTS: creates a string with all information of the rental
     public String toString() {
         return "Rental: \n -Customer: " + customer.getFirstName() + " " + customer.getLastName() + "\n"
                 + " -Car: " + car.getMake() + " " + car.getModel() + "\n"

@@ -73,6 +73,16 @@ public class BookingLogTest {
     }
 
     @Test
+    public void testToString() {
+        testBookings.addRental(testRental1);
+        assertEquals("Booking Log: \n" + testBookings.getBookingID(testBookings.getPosition(testRental1))
+                + ". " + "Rental: \n -Customer: " + testCustomer1.getFirstName() + " " + testCustomer1.getLastName()
+                + "\n" + " -Car: " + testCar1.getMake() + " " + testCar1.getModel()
+                + "\n" + " -Pickup: " + testPickup1
+                + "\n" + " -Dropoff: " + testDropoff1 + "\n\n", testBookings.toString());
+    }
+
+    @Test
     public void testCancelRental() {
         testBookings.addRental(testRental1); //position 0, bookingID 1
         testBookings.addRental(testRental2); //position 1, bookingID 2

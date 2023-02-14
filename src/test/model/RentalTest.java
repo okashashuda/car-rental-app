@@ -39,4 +39,12 @@ public class RentalTest {
         assertEquals(5, testRental.getNumOfDays(testPickup, testDropoff));
         assertEquals(testRental.getNumOfDays(testPickup, testDropoff) * COST_PER_DAY, testRental.totalCost());
     }
+
+    @Test
+    public void testToString() {
+        assertEquals("Rental: \n -Customer: " + testCustomer.getFirstName() + " " + testCustomer.getLastName()
+                + "\n" + " -Car: " + testCar.getMake() + " " + testCar.getModel()
+                + "\n" + " -Pickup: " + testPickup
+                + "\n" + " -Dropoff: " + testDropoff, testRental.toString());
+    }
 }

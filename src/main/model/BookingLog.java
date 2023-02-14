@@ -25,13 +25,17 @@ public class BookingLog {
         getBookingID(position);
     }
 
-    
+    //converts the list of bookings to a string with each booking numbered
+    //MODIFIES: this
+    //EFFECTS: builds a string with "Booking Log:" then numbers each entry of the list starting at 1,2,3...
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Booking Log: \n");
-        for (int i = 0; i < bookings.size(); i++) {
-            sb.append(i + 1 + ". " + bookings.get(position) + "\n");
+        int i = 0;
+        for (Rental rental : bookings) {
+            sb.append(i + 1 + ". " + rental.toString() + "\n");
             sb.append("\n");
+            i++;
         }
         return sb.toString();
     }
