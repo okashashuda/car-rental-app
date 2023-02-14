@@ -58,6 +58,14 @@ public class Rental {
     }
 
 
+    public String toString() {
+        return "Rental: \n -Customer: " + customer.getFirstName() + " " + customer.getLastName() + "\n"
+                + " -Car: " + car.getMake() + " " + car.getModel() + "\n"
+                + " -Pickup: " + pickup + "\n"
+                + " -Dropoff: " + dropoff;
+    }
+
+
     //SIMPLE GETTERS
 
     //get customer details

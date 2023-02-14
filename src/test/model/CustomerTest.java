@@ -20,11 +20,15 @@ public class CustomerTest {
         assertEquals("Ken", testCustomer1.getFirstName());
         assertEquals("Adams", testCustomer1.getLastName());
         assertEquals(25, testCustomer1.getAge());
-        assertTrue(testCustomer1.isValidRenter());
 
         assertEquals("Joe", testCustomer2.getFirstName());
         assertEquals("Black", testCustomer2.getLastName());
         assertEquals(17, testCustomer2.getAge());
+    }
+
+    @Test
+    public void testIsValidDriver() {
+        assertTrue(testCustomer1.isValidRenter());
         assertFalse(testCustomer2.isValidRenter());
     }
 }

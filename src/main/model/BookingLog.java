@@ -25,6 +25,17 @@ public class BookingLog {
         getBookingID(position);
     }
 
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Booking Log: \n");
+        for (int i = 0; i < bookings.size(); i++) {
+            sb.append(i + 1 + ". " + bookings.get(position) + "\n");
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     //remove rental from list of bookings
     //REQUIRES: bookingID be in the list of bookings
     //MODIFIES: bookings
