@@ -47,7 +47,7 @@ public class BookingLogTest {
     }
 
     @Test
-    public void testSetBookingID() {
+    public void testGetBookingID() {
         testBookings.addRental(testRental1);
         assertEquals(0, testBookings.getPosition(testRental1));
         assertEquals(1, testBookings.getBookingID(testBookings.getPosition(testRental1)));
@@ -98,9 +98,9 @@ public class BookingLogTest {
     public void testEditRental() {
         testBookings.addRental(testRental1); //position 0, bookingID 1
         testBookings.addRental(testRental2); //position 1, bookingID 2
-        testBookings.editRental(2, testUpdatedRental2);
-        assertEquals(testRental1, testBookings.getAllBookings().get(0));
-        assertEquals(testUpdatedRental2, testBookings.getAllBookings().get(1));
+        testBookings.editRental(2, testUpdatedRental2); //want to update bookingID 2 with UpdatedRental2
+        assertEquals(testRental1, testBookings.getAllBookings().get(0)); //testRental1 is unchanged
+        assertEquals(testUpdatedRental2, testBookings.getAllBookings().get(1)); //testRental2 has been edited
     }
 
     @Test

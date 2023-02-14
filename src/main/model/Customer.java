@@ -17,6 +17,15 @@ public class Customer {
         this.age = age;
     }
 
+    //checks if customer can rent based on age
+    //EFFECTS: produces TRUE if the person is of at least minimum age to rent, false otherwise.
+    public boolean isValidRenter() {
+        return age >= MIN_AGE;
+    }
+
+
+    //SIMPLE GETTERS
+
     //returns customer's first name
     public String getFirstName() {
         return firstName;
@@ -30,11 +39,5 @@ public class Customer {
     //returns customer's age
     public int getAge() {
         return age;
-    }
-
-    //returns TRUE if age is greater than minimum required age to rent
-    //EFFECTS: produces TRUE if the person is of at least minimum age to rent, false otherwise.
-    public boolean isValidRenter() {
-        return age >= MIN_AGE;
     }
 }

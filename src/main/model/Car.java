@@ -24,6 +24,9 @@ public class Car {
         this.available = available;
     }
 
+
+    //SIMPLE GETTERS
+
     //returns car's make
     public String getMake() {
         return make;

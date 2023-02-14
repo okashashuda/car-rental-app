@@ -43,17 +43,22 @@ public class Rental {
 
     //https://www.baeldung.com/java-string-to-date used for reference
     //return date of pickup in YYYY-MM-DD format
+    //EFFECTS: parses the string input of date and converts to a Date format
     public LocalDate getPickup() {
         pickup = LocalDate.parse("2023-03-20");
         return pickup;
     }
 
     //https://www.baeldung.com/java-string-to-date used for reference
-    //return date of dropoff in YYYY-MM-DD
+    //return date of dropoff in YYYY-MM-DD format
+    //EFFECTS: parses the string input of ate and converts to a Date format
     public LocalDate getDropoff() {
         dropoff = LocalDate.parse("2023-03-24");
         return dropoff;
     }
+
+
+    //SIMPLE GETTERS
 
     //get customer details
     public Customer getCustomerInfo() {

@@ -51,6 +51,24 @@ public class BookingLog {
         bookings.set(position, rental);
     }
 
+    //get position
+    //REQUIRES: rental is in list of bookings
+    //EFFECTS: returns the index of rental from bookings list
+    public int getPosition(Rental rental) {
+        position = bookings.indexOf(rental);
+        return position;
+    }
+
+    //from addRental method, retrieves position
+    //MODIFIES: this
+    //EFFECTS: sets bookingID to the position of rental + 1, so it goes 1,2,3...
+    public int getBookingID(int position) {
+        bookingID = position + 1;
+        return bookingID;
+    }
+
+    //SIMPLE GETTERS
+
     //return list of all bookings
     public List<Rental> getAllBookings() {
         return bookings;
@@ -60,17 +78,4 @@ public class BookingLog {
     public int getSize() {
         return bookings.size();
     }
-
-    //get position
-    public int getPosition(Rental rental) {
-        position = bookings.indexOf(rental);
-        return position;
-    }
-
-    //from addRental method, retrieves position
-    public int getBookingID(int position) {
-        bookingID = position + 1;
-        return bookingID;
-    }
-
 }
