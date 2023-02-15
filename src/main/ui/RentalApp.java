@@ -10,11 +10,9 @@ import java.util.Scanner;
 
 public class RentalApp {
 
-    private Customer customer;
-    private Car c1;
-    private Car c2;
     private LocalDate pickup;
     private LocalDate dropoff;
+    private Rental updatedRental;
     private BookingLog bookingLog = new BookingLog();
     private Scanner input;
 
@@ -46,7 +44,7 @@ public class RentalApp {
     //idea taken from TellerApp program
     //EFFECTS: displays menu to user
     private void displayMenu() {
-        System.out.println("Please select from the following options:\n");
+        System.out.println("Please select from the following options: (enter letter)\n");
         System.out.println("a -> add booking");
         System.out.println("c -> cancel booking");
         System.out.println("v -> view booking details");
@@ -64,7 +62,7 @@ public class RentalApp {
         } else if (userInput.equals("e")) {
             editBooking();
         } else {
-            System.out.println("Invalid input");
+            System.out.println("Your input was INVALID.");
         }
     }
 
@@ -88,6 +86,9 @@ public class RentalApp {
             Rental rental = new Rental(customer, selectedCar, pickup, dropoff);
             bookingLog.addRental(rental);
 
+            System.out.println("\nYour rental period is " + rental.getNumOfDays(pickup, dropoff) + " day(s) from "
+                    + pickup + " to " + dropoff + "\n");
+            System.out.println("Your total cost for this rental is: $" + rental.totalCost() + "\n");
             System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
             System.out.println(bookingLog);
         }
@@ -97,7 +98,7 @@ public class RentalApp {
         Car c1 = new Car("Honda", "Civic", 2020, true);
         Car c2 = new Car("Ford", "Explorer", 2022, true);
 
-        System.out.println("\n\nSelect a car to rent: \n");
+        System.out.println("\n\nSelect a car to rent: (enter number) \n");
         System.out.println("1. " + c1.getMake() + " " + c1.getModel() + " " + "(" + c1.getYear() + ")");
         System.out.println("2. " + c2.getMake() + " " + c2.getModel() + " " + "(" + c2.getYear() + ")");
         int choice = input.nextInt();
@@ -118,7 +119,6 @@ public class RentalApp {
             selectedCar = null;
             System.out.println("You have not chosen a car.");
         }
-        System.out.println("Your rental period is from " + pickup + " to " + dropoff + "\n");
         return selectedCar;
     }
 
@@ -156,7 +156,35 @@ public class RentalApp {
             System.out.print("Enter Booking ID to edit: ");
             int bookingID = input.nextInt();
 
-            System.out.println("\n" + bookingLog.viewRental(bookingID) + "\n");
+            System.out.println("\n Enter updated details below: ");
+            updateBooking();
+
+            bookingLog.editRental(bookingID, updatedRental);
+
+            System.out.println("BOOKING UPDATED!\n");
+            System.out.println(bookingLog);
         }
     }
+
+    private void updateBooking() {
+        System.out.print("Enter first name: ");
+        String firstName = input.next();
+
+        System.out.print("Enter last name: ");
+        String lastName = input.next();
+
+        System.out.print("Enter age: ");
+        int age = input.nextInt();
+
+        Customer customer = new Customer(firstName, lastName, age);
+
+        if (!customer.isValidRenter()) {
+            System.out.println("You're too young to rent a car. Try again.\n");
+        } else {
+            Car selectedCar = chooseCar();
+
+            updatedRental = new Rental(customer, selectedCar, pickup, dropoff);
+        }
+    }
+
 }

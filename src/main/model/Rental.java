@@ -28,6 +28,7 @@ public class Rental {
     //MODIFIES: this
     //EFFECTS: calculates total cost of rental by multiplying cost per day by the number of days car is being rented
     public double totalCost() {
+        getNumOfDays(pickup, dropoff);
         totalCost = numOfDays * COST_PER_DAY;
         return totalCost;
     }
