@@ -28,7 +28,7 @@ public class RentalApp {
     //EFFECTS: processes user input
     private void runApp() {
         boolean keepGoing = true;
-        String userInput = null;
+        String userInput;
 
         while (keepGoing) {
             displayMenu();
@@ -76,16 +76,21 @@ public class RentalApp {
         String lastName = input.next();
 
         System.out.print("Enter age: ");
-        Integer age = input.nextInt();
-
-        Car selectedCar = chooseCar();
+        int age = input.nextInt();
 
         Customer customer = new Customer(firstName, lastName, age);
-        Rental rental = new Rental(customer, selectedCar, pickup, dropoff);
-        bookingLog.addRental(rental);
 
-        System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
-        System.out.println(bookingLog);
+        if (!customer.isValidRenter()) {
+            System.out.println("You're too young to rent a car. Try again.\n");
+        } else {
+            Car selectedCar = chooseCar();
+
+            Rental rental = new Rental(customer, selectedCar, pickup, dropoff);
+            bookingLog.addRental(rental);
+
+            System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
+            System.out.println(bookingLog);
+        }
     }
 
     private Car chooseCar() {
@@ -95,7 +100,7 @@ public class RentalApp {
         System.out.println("\n\nSelect a car to rent: \n");
         System.out.println("1. " + c1.getMake() + " " + c1.getModel() + " " + "(" + c1.getYear() + ")");
         System.out.println("2. " + c2.getMake() + " " + c2.getModel() + " " + "(" + c2.getYear() + ")");
-        Integer choice = input.nextInt();
+        int choice = input.nextInt();
 
         System.out.println("Enter pickup date: (in YYYY-MM-DD format)");
         pickup = LocalDate.parse(input.next());
@@ -123,7 +128,7 @@ public class RentalApp {
         } else {
             System.out.println(bookingLog);
             System.out.print("Enter Booking ID to remove: ");
-            Integer bookingID = input.nextInt();
+            int bookingID = input.nextInt();
             bookingLog.cancelRental(bookingID);
             System.out.println("\nBOOKING SUCCESSFULLY REMOVED!\n");
 
@@ -137,13 +142,21 @@ public class RentalApp {
         } else {
             System.out.println(bookingLog);
             System.out.print("Enter Booking ID to view: ");
-            Integer bookingID = input.nextInt();
+            int bookingID = input.nextInt();
 
             System.out.println("\n" + bookingLog.viewRental(bookingID) + "\n");
         }
     }
 
     private void editBooking() {
-        System.out.println("edit");
+        if (bookingLog.getSize() == 0) {
+            System.out.println("There's no bookings to edit.\n");
+        } else {
+            System.out.println(bookingLog);
+            System.out.print("Enter Booking ID to edit: ");
+            int bookingID = input.nextInt();
+
+            System.out.println("\n" + bookingLog.viewRental(bookingID) + "\n");
+        }
     }
 }
