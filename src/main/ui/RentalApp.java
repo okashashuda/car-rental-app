@@ -52,6 +52,7 @@ public class RentalApp {
         System.out.println("q -> quit\n");
     }
 
+    //EFFECTS: processes user input
     private void continueProcess(String userInput) {
         if (userInput.equals("a")) {
             addBooking();
@@ -66,6 +67,8 @@ public class RentalApp {
         }
     }
 
+    //creates booking to add to list
+    //EFFECTS: takes user input to create customer, select a car, create rental, and calculate total cost
     private void addBooking() {
         System.out.print("Enter first name: ");
         String firstName = input.next();
@@ -87,13 +90,15 @@ public class RentalApp {
             bookingLog.addRental(rental);
 
             System.out.println("\nYour rental period is " + rental.getNumOfDays(pickup, dropoff) + " day(s) from "
-                    + pickup + " to " + dropoff + "\n");
-            System.out.println("Your total cost for this rental is: $" + rental.totalCost() + "\n");
+                    + pickup + " to " + dropoff);
+            System.out.println("Your subtotal for this rental is: $" + rental.totalCost() + "\n");
             System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
             System.out.println(bookingLog);
         }
     }
 
+    //helper function for addBooking that asks user to choose car for the rental
+    //EFFECTS: user chooses one car, selects pickup and dropoff date and program confirms user input
     private Car chooseCar() {
         Car c1 = new Car("Honda", "Civic", 2020, true);
         Car c2 = new Car("Ford", "Explorer", 2022, true);
@@ -122,6 +127,8 @@ public class RentalApp {
         return selectedCar;
     }
 
+    //cancels bookings by removing from list
+    //EFFECTS: user chooses an existing booking to cancel, by entering the bookingID
     private void cancelBooking() {
         if (bookingLog.getSize() == 0) {
             System.out.println("There's no bookings to cancel.\n");
@@ -136,6 +143,8 @@ public class RentalApp {
         }
     }
 
+    //view the details of the booking from list
+    //EFFECTS: user chooses an existing booking to view, by entering the bookingID
     private void viewBooking() {
         if (bookingLog.getSize() == 0) {
             System.out.println("There's no bookings to view.\n");
@@ -148,6 +157,8 @@ public class RentalApp {
         }
     }
 
+    //edit the details of a booking from list
+    //EFFECTS: user chooses an existing booking to edit, and updates it in the list
     private void editBooking() {
         if (bookingLog.getSize() == 0) {
             System.out.println("There's no bookings to edit.\n");
@@ -156,16 +167,21 @@ public class RentalApp {
             System.out.print("Enter Booking ID to edit: ");
             int bookingID = input.nextInt();
 
-            System.out.println("\n Enter updated details below: ");
+            System.out.println("\nEnter updated details below: ");
             updateBooking();
 
             bookingLog.editRental(bookingID, updatedRental);
 
+            System.out.println("\nYour new rental is " + updatedRental.getNumOfDays(pickup, dropoff) + " day(s) from "
+                    + pickup + " to " + dropoff);
+            System.out.println("Your subtotal for this new rental is: $" + updatedRental.totalCost() + "\n");
             System.out.println("BOOKING UPDATED!\n");
             System.out.println(bookingLog);
         }
     }
 
+    //helper function for editBooking that asks user to enter the details to edit the booking
+    //EFFECTS: user chooses to change the details of the booking
     private void updateBooking() {
         System.out.print("Enter first name: ");
         String firstName = input.next();
@@ -186,5 +202,4 @@ public class RentalApp {
             updatedRental = new Rental(customer, selectedCar, pickup, dropoff);
         }
     }
-
 }
