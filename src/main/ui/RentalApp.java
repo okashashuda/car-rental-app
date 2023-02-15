@@ -83,8 +83,8 @@ public class RentalApp {
         Customer customer = new Customer(firstName, lastName, age);
         Rental rental = new Rental(customer, selectedCar, pickup, dropoff);
         bookingLog.addRental(rental);
-        System.out.println("Booking successfully added!\n");
 
+        System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
         System.out.println(bookingLog);
     }
 
@@ -118,22 +118,29 @@ public class RentalApp {
     }
 
     private void cancelBooking() {
-        System.out.println(bookingLog);
-
         if (bookingLog.getSize() == 0) {
-            System.out.println("There's no bookings\n");
+            System.out.println("There's no bookings to cancel.\n");
         } else {
+            System.out.println(bookingLog);
             System.out.print("Enter Booking ID to remove: ");
             Integer bookingID = input.nextInt();
             bookingLog.cancelRental(bookingID);
-            System.out.println("Booking successfully removed!\n");
+            System.out.println("\nBOOKING SUCCESSFULLY REMOVED!\n");
 
             System.out.println(bookingLog);
         }
     }
 
     private void viewBooking() {
-        System.out.println("view");
+        if (bookingLog.getSize() == 0) {
+            System.out.println("There's no bookings to view.\n");
+        } else {
+            System.out.println(bookingLog);
+            System.out.print("Enter Booking ID to view: ");
+            Integer bookingID = input.nextInt();
+
+            System.out.println("\n" + bookingLog.viewRental(bookingID) + "\n");
+        }
     }
 
     private void editBooking() {
