@@ -89,9 +89,10 @@ public class RentalApp {
             Rental rental = new Rental(customer, selectedCar, pickup, dropoff);
             bookingLog.addRental(rental);
 
-            System.out.println("\nYour rental period is " + rental.getNumOfDays(pickup, dropoff) + " day(s) from "
+            System.out.println("Your rental period is " + rental.getNumOfDays(pickup, dropoff) + " day(s) from "
                     + pickup + " to " + dropoff);
-            System.out.println("Your subtotal for this rental is: $" + rental.totalCost() + "\n");
+            System.out.println("Your subtotal for this rental is: $" + rental.totalCost() + " at $"
+                    + Rental.COST_PER_DAY + "/day\n");
             System.out.println("BOOKING SUCCESSFULLY ADDED!\n");
             System.out.println(bookingLog);
         }
@@ -115,10 +116,10 @@ public class RentalApp {
 
         Car selectedCar;
         if (choice == 1) {
-            System.out.println("You chose: " + c1.getMake() + " " + c1.getModel() + " " + "(" + c1.getYear() + ")");
+            System.out.println("\nYou chose: " + c1.getMake() + " " + c1.getModel() + " " + "(" + c1.getYear() + ")");
             selectedCar = c1;
         } else if (choice == 2) {
-            System.out.println("You chose: " + c2.getMake() + " " + c2.getModel() + " " + "(" + c2.getYear() + ")");
+            System.out.println("\nYou chose: " + c2.getMake() + " " + c2.getModel() + " " + "(" + c2.getYear() + ")");
             selectedCar = c2;
         } else {
             selectedCar = null;
@@ -174,7 +175,8 @@ public class RentalApp {
 
             System.out.println("\nYour new rental is " + updatedRental.getNumOfDays(pickup, dropoff) + " day(s) from "
                     + pickup + " to " + dropoff);
-            System.out.println("Your subtotal for this new rental is: $" + updatedRental.totalCost() + "\n");
+            System.out.println("Your subtotal for this new rental is: $" + updatedRental.totalCost() + " at $"
+                    + Rental.COST_PER_DAY + "/day\n");
             System.out.println("BOOKING UPDATED!\n");
             System.out.println(bookingLog);
         }
