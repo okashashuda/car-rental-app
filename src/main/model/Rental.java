@@ -52,7 +52,7 @@ public class Rental {
 
     //https://www.baeldung.com/java-string-to-date used for reference
     //return date of dropoff in YYYY-MM-DD format
-    //EFFECTS: parses the string input of date and converts to a Date format
+    //EFFECTS: parses the string input of ate and converts to a Date format
     public LocalDate getDropoff() {
         dropoff = LocalDate.parse("2023-03-24");
         return dropoff;

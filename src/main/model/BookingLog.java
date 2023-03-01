@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-//a log of all bookings that have been added
 public class BookingLog {
 
     //fields
