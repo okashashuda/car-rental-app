@@ -8,7 +8,7 @@ import model.Rental;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-//console-based UI for a car rental application
+//console-based ui for a car rental application
 public class RentalApp {
 
     private LocalDate pickup;
