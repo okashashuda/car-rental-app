@@ -8,6 +8,7 @@ import model.Rental;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+//console-based UI for a car rental application
 public class RentalApp {
 
     private LocalDate pickup;
@@ -153,7 +154,6 @@ public class RentalApp {
             System.out.println(bookingLog);
             System.out.print("Enter Booking ID to view: ");
             int bookingID = input.nextInt();
-
             System.out.println("\n" + bookingLog.viewRental(bookingID) + "\n");
         }
     }
