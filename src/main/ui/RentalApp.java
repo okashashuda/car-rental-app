@@ -50,6 +50,8 @@ public class RentalApp {
         System.out.println("c -> cancel booking");
         System.out.println("v -> view booking details");
         System.out.println("e -> edit booking details");
+        System.out.println("s -> save booking to file");
+        System.out.println("l -> load booking from file");
         System.out.println("q -> quit\n");
     }
 
@@ -63,6 +65,10 @@ public class RentalApp {
             viewBooking();
         } else if (userInput.equals("e")) {
             editBooking();
+        } else if (userInput.equals("s")) {
+            saveBooking();
+        } else if (userInput.equals("l")) {
+            loadBooking();
         } else {
             System.out.println("Your input was INVALID.");
         }
@@ -102,8 +108,8 @@ public class RentalApp {
     //helper function for addBooking that asks user to choose car for the rental
     //EFFECTS: user chooses one car, selects pickup and dropoff date and program confirms user input
     private Car chooseCar() {
-        Car c1 = new Car("Honda", "Civic", 2020, true);
-        Car c2 = new Car("Ford", "Explorer", 2022, true);
+        Car c1 = new Car("Honda", "Civic", 2020);
+        Car c2 = new Car("Ford", "Explorer", 2022);
 
         System.out.println("\n\nSelect a car to rent: (enter number) \n");
         System.out.println("1. " + c1.getMake() + " " + c1.getModel() + " " + "(" + c1.getYear() + ")");
@@ -203,5 +209,15 @@ public class RentalApp {
 
             updatedRental = new Rental(customer, selectedCar, pickup, dropoff);
         }
+    }
+
+    //EFFECTS: user chooses to save their booking to file
+    private void saveBooking() {
+        System.out.println("WORK ON SAVED");
+    }
+
+    //EFFECTS: user chooses to load their booking from file
+    private void loadBooking() {
+        System.out.println("WORK ON LOADED");
     }
 }

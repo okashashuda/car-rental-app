@@ -18,7 +18,7 @@ public class RentalTest {
     @BeforeEach
     public void setUp() {
         testCustomer = new Customer("Ken", "Adams", 25);
-        testCar = new Car("Honda", "Civic", 2020, true);
+        testCar = new Car("Honda", "Civic", 2020);
         testPickup = LocalDate.parse("2023-03-20");
         testDropoff = LocalDate.parse("2023-03-24");
         testRental = new Rental(testCustomer, testCar, testPickup, testDropoff);

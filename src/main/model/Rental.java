@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -65,6 +67,16 @@ public class Rental {
                 + " -Car: " + car.getMake() + " " + car.getModel() + "\n"
                 + " -Pickup: " + pickup + "\n"
                 + " -Dropoff: " + dropoff;
+    }
+
+    //EFFECTS: creates a JSON representation of all information of the rental
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Customer", customer);
+        json.put("Car", car);
+        json.put("Pickup", pickup);
+        json.put("Dropoff", dropoff);
+        return json;
     }
 
 

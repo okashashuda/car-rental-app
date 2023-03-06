@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +84,24 @@ public class BookingLog {
     public int getBookingID(int position) {
         bookingID = position + 1;
         return bookingID;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", "Booking Log: ");
+        json.put("rentals", rentalsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray rentalsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Rental rental : bookings) {
+            jsonArray.put(rental.toJson());
+        }
+
+        return jsonArray;
     }
 
     //SIMPLE GETTERS

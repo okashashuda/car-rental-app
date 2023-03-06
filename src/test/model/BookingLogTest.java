@@ -28,8 +28,8 @@ public class BookingLogTest {
         testBookings = new BookingLog();
         testCustomer1 = new Customer("Ken", "Adams", 25);
         testCustomer2 = new Customer("Joe", "Black", 23);
-        testCar1 = new Car("Honda", "Civic", 2020, true);
-        testCar2 = new Car("Toyota", "Camry", 2022, true);
+        testCar1 = new Car("Honda", "Civic", 2020);
+        testCar2 = new Car("Toyota", "Camry", 2022);
         testPickup1 = LocalDate.parse("2023-03-20");
         testPickup2 = LocalDate.parse("2023-04-20");
         testDropoff1 = LocalDate.parse("2023-03-24");

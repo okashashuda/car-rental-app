@@ -9,20 +9,12 @@ public class Car {
     private int year;
     private boolean available;
 
-    public Car(String make, String model, int year, boolean available) {
+    public Car(String make, String model, int year) {
         this.make = make;
         this.model = model;
         this.year = year;
-        this.available = available;
     }
 
-    //if car has been rented, set availability to false
-    //else if still available, set availability to true
-    //MODIFIES: this
-    //EFFECTS: changes setAvailable if car is no longer available to rent
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 
 
     //SIMPLE GETTERS
@@ -40,10 +32,5 @@ public class Car {
     //returns car's year
     public int getYear() {
         return year;
-    }
-
-    //returns current availability of car
-    public boolean isAvailable() {
-        return available;
     }
 }

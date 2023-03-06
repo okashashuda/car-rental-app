@@ -11,7 +11,7 @@ class CarTest {
 
     @BeforeEach
     public void setUp() {
-        testCar = new Car("Honda", "Civic", 2020, true);
+        testCar = new Car("Honda", "Civic", 2020);
     }
 
     @Test
@@ -19,16 +19,5 @@ class CarTest {
         assertEquals("Honda", testCar.getMake());
         assertEquals("Civic", testCar.getModel());
         assertEquals(2020, testCar.getYear());
-        assertTrue(testCar.isAvailable());
     }
-
-    @Test
-    public void testSetAvailable() {
-        assertTrue(testCar.isAvailable());
-        testCar.setAvailable(false);
-        assertFalse(testCar.isAvailable());
-    }
-
-
-
 }

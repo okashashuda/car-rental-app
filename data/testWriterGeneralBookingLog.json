@@ -1,0 +1,9 @@
+{
+    "name": "Booking Log: ",
+    "rentals": [{
+        "Dropoff": "2023-03-24",
+        "Customer": "model.Customer@409bf450",
+        "Car": "model.Car@38d8f54a",
+        "Pickup": "2023-03-20"
+    }]
+}
