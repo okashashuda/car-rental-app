@@ -24,7 +24,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    void testWriterInvalidFile() {
+    public void testWriterInvalidFile() {
         try {
             BookingLog bl = new BookingLog();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
@@ -36,7 +36,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    public void testWriterEmptyWorkroom() {
         try {
             BookingLog bl = new BookingLog();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyBookingLog.json");
@@ -53,7 +53,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    public void testWriterGeneralWorkroom() {
         try {
             BookingLog bl = new BookingLog();
             bl.addRental(testRental);

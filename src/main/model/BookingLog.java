@@ -88,7 +88,6 @@ public class BookingLog {
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", "Booking Log: ");
         json.put("rentals", rentalsToJson());
         return json;
     }
@@ -96,7 +95,6 @@ public class BookingLog {
     // EFFECTS: returns things in this workroom as a JSON array
     private JSONArray rentalsToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Rental rental : bookings) {
             jsonArray.put(rental.toJson());
         }

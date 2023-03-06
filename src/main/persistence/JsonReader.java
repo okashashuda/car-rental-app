@@ -22,7 +22,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads booking log from file and returns it;
     // throws IOException if an error occurs reading data from file
     public BookingLog read() throws IOException {
         String jsonData = readFile(source);
@@ -43,9 +43,8 @@ public class JsonReader {
 
     // EFFECTS: parses booking log from JSON object and returns it
     private BookingLog parseBookingLog(JSONObject jsonObject) {
-        String name = jsonObject.getString("Customer");
         BookingLog bl = new BookingLog();
-        JSONArray rentalArray = jsonObject.getJSONArray("Rentals");
+        JSONArray rentalArray = jsonObject.getJSONArray("rentals");
         for (Object rentalObj : rentalArray) {
             JSONObject nextRental = (JSONObject) rentalObj;
             Rental rental = parseRental(nextRental);

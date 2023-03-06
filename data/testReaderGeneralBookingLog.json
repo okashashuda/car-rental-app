@@ -1,0 +1,14 @@
+{
+  "rentals": [
+    {
+      "firstName": "Ken",
+      "lastName": "Adams",
+      "age": 25,
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2020,
+      "pickup": "2023-03-20",
+      "dropoff": "2023-03-24"
+    }
+  ]
+}
