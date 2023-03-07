@@ -1,0 +1,10 @@
+{"rentals": [{
+    "firstName": "jack",
+    "lastName": "bloom",
+    "year": 2022,
+    "dropoff": "2023-04-27",
+    "pickup": "2023-04-25",
+    "model": "Explorer",
+    "make": "Ford",
+    "age": 25
+}]}

@@ -72,10 +72,14 @@ public class Rental {
     //EFFECTS: creates a JSON representation of all information of the rental
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("Customer", customer);
-        json.put("Car", car);
-        json.put("Pickup", pickup);
-        json.put("Dropoff", dropoff);
+        json.put("firstName", customer.getFirstName());
+        json.put("lastName", customer.getLastName());
+        json.put("age", customer.getAge());
+        json.put("make", car.getMake());
+        json.put("model", car.getModel());
+        json.put("year", car.getYear());
+        json.put("pickup", pickup.toString());
+        json.put("dropoff", dropoff.toString());
         return json;
     }
 

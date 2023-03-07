@@ -1,9 +1,10 @@
-{
-    "name": "Booking Log: ",
-    "rentals": [{
-        "Dropoff": "2023-03-24",
-        "Customer": "model.Customer@351d00c0",
-        "Car": "model.Car@2a3b5b47",
-        "Pickup": "2023-03-20"
-    }]
-}
+{"rentals": [{
+    "firstName": "Ken",
+    "lastName": "Adams",
+    "year": 2020,
+    "dropoff": "2023-03-24",
+    "pickup": "2023-03-20",
+    "model": "Civic",
+    "make": "Honda",
+    "age": 25
+}]}

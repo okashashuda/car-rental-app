@@ -31,12 +31,12 @@ public class JsonWriterTest {
             writer.open();
             fail("IOException was expected");
         } catch (IOException e) {
-            // pass
+            // passes if IOException is thrown
         }
     }
 
     @Test
-    public void testWriterEmptyWorkroom() {
+    public void testWriterEmptyBooking() {
         try {
             BookingLog bl = new BookingLog();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyBookingLog.json");
@@ -53,10 +53,10 @@ public class JsonWriterTest {
     }
 
     @Test
-    public void testWriterGeneralWorkroom() {
+    public void testWriterGeneralBooking() {
         try {
             BookingLog bl = new BookingLog();
-            bl.addRental(testRental);
+            bl.addRental(testRental); //this line is causing the error
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookingLog.json");
             writer.open();
             writer.write(bl);

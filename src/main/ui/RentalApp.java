@@ -4,21 +4,30 @@ import model.BookingLog;
 import model.Car;
 import model.Customer;
 import model.Rental;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 //console-based ui for a car rental application
 public class RentalApp {
 
+    private static final String DESTINATION = "./data/bookinglog.json";
     private LocalDate pickup;
     private LocalDate dropoff;
     private Rental updatedRental;
     private BookingLog bookingLog = new BookingLog();
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    public RentalApp() {
+    public RentalApp() throws FileNotFoundException {
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(DESTINATION);
+        jsonReader = new JsonReader(DESTINATION);
         runApp();
     }
 
@@ -213,11 +222,25 @@ public class RentalApp {
 
     //EFFECTS: user chooses to save their booking to file
     private void saveBooking() {
-        System.out.println("WORK ON SAVED");
+        try {
+            jsonWriter.open();
+            jsonWriter.write(bookingLog);
+            jsonWriter.close();
+            System.out.println("SAVED TO: " + DESTINATION);
+        } catch (FileNotFoundException e) {
+            System.out.println("CANNOT WRITE TO FILE: " + DESTINATION);
+        }
+
     }
 
     //EFFECTS: user chooses to load their booking from file
     private void loadBooking() {
-        System.out.println("WORK ON LOADED");
+        try {
+            bookingLog = jsonReader.read();
+            System.out.println("LOADED FROM: " + DESTINATION);
+        } catch (IOException e) {
+            System.out.println("CANNOT READ FROM FILE: " + DESTINATION);
+        }
+
     }
 }
