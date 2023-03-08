@@ -23,6 +23,7 @@ public class JsonWriterTest {
         testRental = new Rental(testCustomer, testCar, testPickup, testDropoff);
     }
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testWriterInvalidFile() {
         try {
@@ -35,6 +36,7 @@ public class JsonWriterTest {
         }
     }
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testWriterEmptyBooking() {
         try {
@@ -52,6 +54,7 @@ public class JsonWriterTest {
         }
     }
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testWriterGeneralBooking() {
         try {

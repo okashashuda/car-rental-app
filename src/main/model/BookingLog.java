@@ -86,21 +86,23 @@ public class BookingLog {
         return bookingID;
     }
 
+    //idea taken from JsonSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("rentals", rentalsToJson());
         return json;
     }
 
+    //idea taken from JsonSerializationDemo
     // EFFECTS: returns things in this workroom as a JSON array
     private JSONArray rentalsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Rental rental : bookings) {
             jsonArray.put(rental.toJson());
         }
-
         return jsonArray;
     }
+
 
     //SIMPLE GETTERS
 

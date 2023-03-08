@@ -14,6 +14,8 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.stream.Stream;
 
+//idea taken from JsonSerializationDemo
+// Represents a reader that reads JSON representation of booking from file
 public class JsonReader {
     private String source;
 
@@ -37,7 +39,6 @@ public class JsonReader {
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> sb.append(s));
         }
-
         return sb.toString();
     }
 

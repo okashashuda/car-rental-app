@@ -220,6 +220,7 @@ public class RentalApp {
         }
     }
 
+    //idea taken from JsonSerializationDemo
     //EFFECTS: user chooses to save their booking to file
     private void saveBooking() {
         try {
@@ -228,18 +229,19 @@ public class RentalApp {
             jsonWriter.close();
             System.out.println("SAVED TO: " + DESTINATION);
         } catch (FileNotFoundException e) {
-            System.out.println("CANNOT WRITE TO FILE: " + DESTINATION);
+            System.out.println("CANNOT WRITE TO FILE: " + DESTINATION + "\n");
         }
 
     }
 
+    //idea taken from JsonSerializationDemo
     //EFFECTS: user chooses to load their booking from file
     private void loadBooking() {
         try {
             bookingLog = jsonReader.read();
             System.out.println("LOADED FROM: " + DESTINATION);
         } catch (IOException e) {
-            System.out.println("CANNOT READ FROM FILE: " + DESTINATION);
+            System.out.println("CANNOT READ FROM FILE: " + DESTINATION + "\n");
         }
 
     }

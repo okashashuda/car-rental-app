@@ -16,7 +16,6 @@ public class Car {
     }
 
 
-
     //SIMPLE GETTERS
 
     //returns car's make

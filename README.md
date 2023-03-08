@@ -27,5 +27,8 @@
 - as a user, I want to be able to edit my current booking
 - as a user, I want to be able to cancel my current booking
 - as a user, I want to be able to view the details of my booking
-- as a user, I want to be able to save my bookings and have the option to do or not
-- as a user, I want to be able to load my bookings from file and have the option to do or not
+- as a user, I want to be able to save my bookings and have the option to do or not*
+- as a user, I want to be able to load my bookings from file and have the option to do or not*
+
+**the bulk of saving/loading data from a file is adapted from the sample application given in the 
+JsonSerializationDemo*

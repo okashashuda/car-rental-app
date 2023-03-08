@@ -69,6 +69,7 @@ public class Rental {
                 + " -Dropoff: " + dropoff;
     }
 
+    //idea taken from JsonSerializationDemo
     //EFFECTS: creates a JSON representation of all information of the rental
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
