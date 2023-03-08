@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +24,8 @@ public class BookingLogTest {
     private Rental testRental1;
     private Rental testRental2;
     private Rental testUpdatedRental2;
+    private JSONObject testJsonObject;
+    private JSONArray testJsonArray;
 
     @BeforeEach
     public void setUp() {
@@ -119,5 +123,20 @@ public class BookingLogTest {
         assertEquals(1, testBookings.getAllBookings().size());
         testBookings.addRental(testRental2);
         assertEquals(2, testBookings.getAllBookings().size());
+    }
+
+    @Test
+    public void testToJson() {
+        testBookings.addRental(testRental1);
+        testJsonObject = testBookings.toJson();
+        testJsonArray = testBookings.toJson().getJSONArray("rentals");
+        assertEquals(1, testJsonArray.length());
+        assertEquals(testRental1.toJson().toString(), testJsonArray.getJSONObject(0).toString());
+        //the .toString() converts both into JSON text so comparing them is easier.
+        testBookings.addRental(testRental2);
+        testJsonObject = testBookings.toJson();
+        testJsonArray = testBookings.toJson().getJSONArray("rentals");
+        assertEquals(2, testJsonArray.length());
+        assertEquals(testRental2.toJson().toString(), testJsonArray.getJSONObject(1).toString());
     }
 }

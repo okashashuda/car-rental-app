@@ -1,7 +1,8 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Date;
+
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ public class RentalTest {
     private LocalDate testPickup;
     private LocalDate testDropoff;
     private Rental testRental;
+    private JSONObject testJson;
 
     @BeforeEach
     public void setUp() {
@@ -22,6 +24,7 @@ public class RentalTest {
         testPickup = LocalDate.parse("2023-03-20");
         testDropoff = LocalDate.parse("2023-03-24");
         testRental = new Rental(testCustomer, testCar, testPickup, testDropoff);
+        testJson = testRental.toJson();
     }
 
     @Test
@@ -46,5 +49,19 @@ public class RentalTest {
                 + "\n" + " -Car: " + testCar.getMake() + " " + testCar.getModel()
                 + "\n" + " -Pickup: " + testPickup
                 + "\n" + " -Dropoff: " + testDropoff, testRental.toString());
+    }
+
+    @Test
+    public void testToJson() {
+        assertEquals("Ken", testJson.getString("firstName"));
+        assertEquals("Adams", testJson.getString("lastName"));
+        assertEquals(25, testJson.getInt("age"));
+        assertEquals("Honda", testJson.getString("make"));
+        assertEquals("Civic", testJson.getString("model"));
+        assertEquals(2020, testJson.getInt("year"));
+        assertEquals("Ken", testJson.getString("firstName"));
+        assertEquals("2023-03-20", testJson.getString("pickup"));
+        assertEquals("2023-03-24", testJson.getString("dropoff"));
+
     }
 }

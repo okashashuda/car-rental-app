@@ -59,7 +59,7 @@ public class JsonWriterTest {
     public void testWriterGeneralBooking() {
         try {
             BookingLog bl = new BookingLog();
-            bl.addRental(testRental); //this line is causing the error
+            bl.addRental(testRental);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookingLog.json");
             writer.open();
             writer.write(bl);
