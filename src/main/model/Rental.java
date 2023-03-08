@@ -70,6 +70,7 @@ public class Rental {
     }
 
     //idea taken from JsonSerializationDemo
+    //converts each aspect of rental booking to JSON representation
     //EFFECTS: creates a JSON representation of all information of the rental
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

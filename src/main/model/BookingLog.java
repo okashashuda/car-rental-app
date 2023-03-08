@@ -87,6 +87,7 @@ public class BookingLog {
     }
 
     //idea taken from JsonSerializationDemo
+    //creates JSON representation of list of bookings called 'rentals'
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("rentals", rentalsToJson());
@@ -94,7 +95,8 @@ public class BookingLog {
     }
 
     //idea taken from JsonSerializationDemo
-    // EFFECTS: returns things in this workroom as a JSON array
+    //converts each rental in list of bookings to JSON representation
+    //EFFECTS: returns things in this workroom as a JSON array
     private JSONArray rentalsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Rental rental : bookings) {

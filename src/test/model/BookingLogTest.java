@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookingLogTest {
-
     private BookingLog testBookings;
     private Customer testCustomer1;
     private Customer testCustomer2;
