@@ -15,24 +15,24 @@ import java.time.LocalDate;
 import java.util.stream.Stream;
 
 //idea taken from JsonSerializationDemo
-// Represents a reader that reads JSON representation of booking from file
+//Represents a reader that reads JSON representation of booking from file
 public class JsonReader {
     private String source;
 
-    // EFFECTS: constructs reader to read from source file
+    //EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
     }
 
-    // EFFECTS: reads booking log from file and returns it;
-    // throws IOException if an error occurs reading data from file
+    //EFFECTS: reads booking log from file and returns it;
+    //         throws IOException if an error occurs reading data from file
     public BookingLog read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBookingLog(jsonObject);
     }
 
-    // EFFECTS: reads source file as string and returns it
+    //EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder sb = new StringBuilder();
 
@@ -42,7 +42,7 @@ public class JsonReader {
         return sb.toString();
     }
 
-    // EFFECTS: parses booking log from JSON object and returns it
+    //EFFECTS: parses booking log from JSON object and returns it
     private BookingLog parseBookingLog(JSONObject jsonObject) {
         BookingLog bl = new BookingLog();
         JSONArray rentalArray = jsonObject.getJSONArray("rentals");

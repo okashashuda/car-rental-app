@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonReaderTest {
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
@@ -20,6 +21,7 @@ public class JsonReaderTest {
         }
     }
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testReaderEmptyBookingLog() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyBookingLog.json");
@@ -31,12 +33,13 @@ public class JsonReaderTest {
         }
     }
 
+    //idea taken from JsonSerializationDemo
     @Test
     public void testReaderGeneralBookingLog() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralBookingLog.json");
         try {
             BookingLog bl = reader.read();
-            List<Rental> bookings = bl.getAllBookings();
+            List<Rental> bookingsList = bl.getAllBookings();
             assertEquals(1, bl.getSize());
         } catch (IOException e) {
             fail("Couldn't read from file");

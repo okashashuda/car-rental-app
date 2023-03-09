@@ -67,7 +67,7 @@ public class JsonWriterTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralBookingLog.json");
             bl = reader.read();
-            List<Rental> rentals = bl.getAllBookings();
+            List<Rental> bookingsList = bl.getAllBookings();
             assertEquals(1, bl.getSize());
 
         } catch (IOException e) {
