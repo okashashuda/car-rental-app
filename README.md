@@ -32,3 +32,9 @@
 
 **the bulk of saving/loading data from a file is adapted from the sample application given in the 
 JsonSerializationDemo*
+
+*phase 3 of the project required the use of external sources:*
+- https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
+- https://www.guru99.com/java-swing-gui.html
+- https://www.javatpoint.com/java-jcombobox
+- https://www.youtube.com/watch?v=5o3fMLPY7qY

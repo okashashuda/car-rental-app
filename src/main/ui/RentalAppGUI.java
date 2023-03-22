@@ -1,11 +1,17 @@
 package ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class RentalAppGUI extends JFrame {
 
-    private JList<String> rentalList;
+    private JList<String> bookingLog;
+    private DefaultListModel listModel;
     private JButton addButton;
     private JButton cancelButton;
     private JButton viewButton;
@@ -26,18 +32,24 @@ public class RentalAppGUI extends JFrame {
     private JTextField endDateField;
 
     public RentalAppGUI() {
-        // Set up the main frame
+        //SETUP MAIN FRAME
         JFrame mainFrame = new JFrame("Rental Car App");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(800, 500);
-        mainFrame.setLocationRelativeTo(null);
+        //mainFrame.setLocationRelativeTo(null); //DELETE LATER, IF NEEDED
 
-        // Set up the left panel with the rental list
-        rentalList = new JList<String>();
-        JScrollPane rentalListScrollPane = new JScrollPane(rentalList);
+        listModel = new DefaultListModel<>();
+        listModel.addElement("Rental 1");
+        listModel.addElement("Rental 2");
+        listModel.addElement("Rental 3");
+
+        //SETUP LEFT PANEL (with booking log)
+        bookingLog = new JList<String>(listModel);
+        bookingLog.setFixedCellWidth(mainFrame.getWidth() / 3);
+        JScrollPane bookingLogScrollPane = new JScrollPane(bookingLog);
         JPanel leftPanel = new JPanel(new BorderLayout());
-        leftPanel.setBorder(BorderFactory.createTitledBorder("Rental Bookings"));
-        leftPanel.add(rentalListScrollPane, BorderLayout.CENTER);
+        leftPanel.setBorder(BorderFactory.createTitledBorder("Booking Log"));
+        leftPanel.add(bookingLogScrollPane, BorderLayout.CENTER);
         mainFrame.add(leftPanel, BorderLayout.WEST);
 
         //CUSTOMER INFO
@@ -49,6 +61,7 @@ public class RentalAppGUI extends JFrame {
         //BUTTONS
         JPanel buttonPanel = getButtonPanel();
 
+        //SETUP RIGHT PANEL (with customer info, car info, and buttons)
         JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.add(customerInfo, BorderLayout.NORTH);
         rightPanel.add(carInfo, BorderLayout.CENTER);
@@ -56,13 +69,12 @@ public class RentalAppGUI extends JFrame {
 
         mainFrame.add(rightPanel, BorderLayout.CENTER);
 
-        // Display the GUI
+        //DISPLAY GUI
         mainFrame.setVisible(true);
     }
 
     //BUTTONS
     private JPanel getButtonPanel() {
-        // Set up the right panel with the buttons and input fields
         addButton = new JButton("Add");
         cancelButton = new JButton("Cancel");
         viewButton = new JButton("View");
@@ -78,6 +90,12 @@ public class RentalAppGUI extends JFrame {
         buttonPanel.add(editButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
+
+        HireListener hireListener = new HireListener(addButton);
+        addButton.setActionCommand("Add");
+        addButton.addActionListener(hireListener);
+        addButton.setEnabled(false);
+
         return buttonPanel;
     }
 
@@ -95,31 +113,32 @@ public class RentalAppGUI extends JFrame {
         JPanel customerInfo = new JPanel(new GridBagLayout());
         customerInfo.setBorder(BorderFactory.createTitledBorder("Customer Information"));
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 5, 5, 5);
+        GridBagConstraints customerGrid = new GridBagConstraints();
+        customerGrid.anchor = GridBagConstraints.WEST;
+        customerGrid.insets = new Insets(5, 5, 5, 5);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        customerInfo.add(firstNameLabel, gbc);
+        customerGrid.gridx = 0;
+        customerGrid.gridy = 0;
+        customerInfo.add(firstNameLabel, customerGrid);
 
-        gbc.gridx = 1;
-        customerInfo.add(firstNameField, gbc);
+        customerGrid.gridx = 1;
+        customerInfo.add(firstNameField, customerGrid);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        customerInfo.add(lastNameLabel, gbc);
+        customerGrid.gridx = 0;
+        customerGrid.gridy = 1;
+        customerInfo.add(lastNameLabel, customerGrid);
 
-        gbc.gridx = 1;
-        customerInfo.add(lastNameField, gbc);
+        customerGrid.gridx = 1;
+        customerInfo.add(lastNameField, customerGrid);
 
-        gbc.gridx = 2;
-        gbc.gridy = 1;
-        customerInfo.add(ageLabel, gbc);
+        customerGrid.gridx = 2;
+        customerGrid.gridy = 1;
+        customerInfo.add(ageLabel, customerGrid);
 
-        gbc.gridx = 3;
-        gbc.gridy = 1;
-        customerInfo.add(ageField, gbc);
+        customerGrid.gridx = 3;
+        customerGrid.gridy = 1;
+        customerInfo.add(ageField, customerGrid);
+
         return customerInfo;
     }
 
@@ -141,30 +160,129 @@ public class RentalAppGUI extends JFrame {
         JPanel carInfo = new JPanel(new GridBagLayout());
         carInfo.setBorder(BorderFactory.createTitledBorder("Car Information"));
 
-        GridBagConstraints gbc2 = new GridBagConstraints();
-        gbc2.anchor = GridBagConstraints.WEST;
-        gbc2.insets = new Insets(5, 5, 5, 5);
+        GridBagConstraints carGrid = new GridBagConstraints();
+        carGrid.anchor = GridBagConstraints.WEST;
+        carGrid.insets = new Insets(5, 5, 5, 5);
 
-        gbc2.gridx = 0;
-        gbc2.gridy = 0;
-        carInfo.add(carLabel, gbc2);
+        carGrid.gridx = 0;
+        carGrid.gridy = 0;
+        carInfo.add(carLabel, carGrid);
 
-        gbc2.gridx = 1;
-        carInfo.add(carField,gbc2);
+        carGrid.gridx = 1;
+        carInfo.add(carField,carGrid);
 
-        gbc2.gridx = 0;
-        gbc2.gridy = 1;
-        carInfo.add(startDateLabel, gbc2);
+        carGrid.gridx = 0;
+        carGrid.gridy = 1;
+        carInfo.add(startDateLabel, carGrid);
 
-        gbc2.gridx = 1;
-        carInfo.add(startDateField, gbc2);
+        carGrid.gridx = 1;
+        carInfo.add(startDateField, carGrid);
 
-        gbc2.gridx = 0;
-        gbc2.gridy = 2;
-        carInfo.add(endDateLabel, gbc2);
+        carGrid.gridx = 0;
+        carGrid.gridy = 2;
+        carInfo.add(endDateLabel, carGrid);
 
-        gbc2.gridx = 1;
-        carInfo.add(endDateField, gbc2);
+        carGrid.gridx = 1;
+        carInfo.add(endDateField, carGrid);
+
         return carInfo;
+    }
+
+
+
+    //This listener is shared by the text field and the hire button.
+    class HireListener implements ActionListener, DocumentListener {
+        private boolean alreadyEnabled = false;
+        private JButton button;
+
+        public HireListener(JButton button) {
+            this.button = button;
+        }
+
+        //Required by ActionListener.
+        public void actionPerformed(ActionEvent e) {
+            String name = firstNameField.getText();
+
+            //User didn't type in a unique name...
+            if (name.equals("") || alreadyInList(name)) {
+                Toolkit.getDefaultToolkit().beep();
+                firstNameField.requestFocusInWindow();
+                firstNameField.selectAll();
+                return;
+            }
+
+            int index = bookingLog.getSelectedIndex(); //get selected index
+            if (index == -1) { //no selection, so insert at beginning
+                index = 0;
+            } else {           //add after the selected item
+                index++;
+            }
+
+            listModel.insertElementAt(firstNameField.getText(), index);
+            //If we just wanted to add to the end, we'd do this:
+            //listModel.addElement(employeeName.getText());
+
+            //Reset the text field.
+            firstNameField.requestFocusInWindow();
+            firstNameField.setText("");
+
+            //Select the new item and make it visible.
+            bookingLog.setSelectedIndex(index);
+            bookingLog.ensureIndexIsVisible(index);
+        }
+
+        //This method tests for string equality. You could certainly
+        //get more sophisticated about the algorithm.  For example,
+        //you might want to ignore white space and capitalization.
+        protected boolean alreadyInList(String name) {
+            return listModel.contains(name);
+        }
+
+        //Required by DocumentListener.
+        public void insertUpdate(DocumentEvent e) {
+            enableButton();
+        }
+
+        //Required by DocumentListener.
+        public void removeUpdate(DocumentEvent e) {
+            handleEmptyTextField(e);
+        }
+
+        //Required by DocumentListener.
+        public void changedUpdate(DocumentEvent e) {
+            if (!handleEmptyTextField(e)) {
+                enableButton();
+            }
+        }
+
+        private void enableButton() {
+            if (!alreadyEnabled) {
+                button.setEnabled(true);
+            }
+        }
+
+        private boolean handleEmptyTextField(DocumentEvent e) {
+            if (e.getDocument().getLength() <= 0) {
+                button.setEnabled(false);
+                alreadyEnabled = false;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    //This method is required by ListSelectionListener.
+    public void valueChanged(ListSelectionEvent e) {
+        if (e.getValueIsAdjusting() == false) {
+
+            if (bookingLog.getSelectedIndex() == -1) {
+                //No selection, disable fire button.
+                cancelButton.setEnabled(false);
+
+            } else {
+                //Selection, enable the fire button.
+                cancelButton.setEnabled(true);
+            }
+        }
     }
 }

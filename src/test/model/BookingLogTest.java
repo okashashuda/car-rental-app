@@ -45,7 +45,7 @@ public class BookingLogTest {
 
     @Test
     public void testConstructor() {
-        //Customer, Car, and Rental already been tested in their respective TestGUI classes
+        //Customer, Car, and Rental already been tested in their respective test classes
         assertEquals(0, testBookings.getSize());
     }
 
