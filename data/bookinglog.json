@@ -1,10 +1,22 @@
-{"rentals": [{
-    "firstName": "jack",
-    "lastName": "black",
-    "year": 2022,
-    "dropoff": "2023-04-05",
-    "pickup": "2023-04-04",
-    "model": "Explorer",
-    "make": "Ford",
-    "age": 30
-}]}
+{"rentals": [
+    {
+        "firstName": "j",
+        "lastName": "d",
+        "year": 2020,
+        "dropoff": "2023-04-04",
+        "pickup": "2023-03-03",
+        "model": "Civic",
+        "make": "Honda",
+        "age": 32
+    },
+    {
+        "firstName": "t",
+        "lastName": "r",
+        "year": 2022,
+        "dropoff": "2023-04-05",
+        "pickup": "2023-04-04",
+        "model": "Explorer",
+        "make": "Ford",
+        "age": 43
+    }
+]}
