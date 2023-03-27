@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -10,7 +9,7 @@ import javax.swing.*;
 public class RentalAppGUI extends JFrame {
 
     protected JList<String> bookingLog;
-    protected DefaultListModel listModel;
+    public DefaultListModel listModel;
 
     protected JButton addButton;
     protected JButton cancelButton;
@@ -23,15 +22,15 @@ public class RentalAppGUI extends JFrame {
     private JLabel lastNameLabel;
     private JLabel ageLabel;
     private JLabel carLabel;
-    private JLabel startDateLabel;
-    private JLabel endDateLabel;
+    private JLabel pickupDateLabel;
+    private JLabel dropoffDateLabel;
 
     protected JTextField firstNameField;
     protected JTextField lastNameField;
     protected JTextField ageField;
-    private JComboBox carField;
-    protected JTextField startDateField;
-    protected JTextField endDateField;
+    protected JComboBox carField;
+    protected JTextField pickupDateField;
+    protected JTextField dropoffDateField;
 
     public RentalAppGUI() {
         //SETUP MAIN FRAME
@@ -128,12 +127,12 @@ public class RentalAppGUI extends JFrame {
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private JPanel getCarInfo() {
         carLabel = new JLabel("Car:");
-        startDateLabel = new JLabel("Start Date: (yyyy-mm-dd)");
-        endDateLabel = new JLabel("End Date: (yyyy-mm-dd)");
+        pickupDateLabel = new JLabel("Start Date: (yyyy-mm-dd)");
+        dropoffDateLabel = new JLabel("End Date: (yyyy-mm-dd)");
 
         carField = new JComboBox<String>();
-        startDateField = new JTextField(20);
-        endDateField = new JTextField(20);
+        pickupDateField = new JTextField(20);
+        dropoffDateField = new JTextField(20);
 
         //ADD MORE CARS HERE
         carField.addItem("2020 Honda Civic");
@@ -155,17 +154,17 @@ public class RentalAppGUI extends JFrame {
 
         carGrid.gridx = 0;
         carGrid.gridy = 1;
-        carInfo.add(startDateLabel, carGrid);
+        carInfo.add(pickupDateLabel, carGrid);
 
         carGrid.gridx = 1;
-        carInfo.add(startDateField, carGrid);
+        carInfo.add(pickupDateField, carGrid);
 
         carGrid.gridx = 0;
         carGrid.gridy = 2;
-        carInfo.add(endDateLabel, carGrid);
+        carInfo.add(dropoffDateLabel, carGrid);
 
         carGrid.gridx = 1;
-        carInfo.add(endDateField, carGrid);
+        carInfo.add(dropoffDateField, carGrid);
 
         return carInfo;
     }
@@ -183,10 +182,10 @@ public class RentalAppGUI extends JFrame {
         buttonPanel.setBorder(BorderFactory.createTitledBorder("Actions"));
         buttonPanel.add(addButton);
         buttonPanel.add(cancelButton);
-        //buttonPanel.add(viewButton);
-        //buttonPanel.add(editButton);
-        //buttonPanel.add(saveButton);
-        //buttonPanel.add(loadButton);
+        buttonPanel.add(viewButton);
+        buttonPanel.add(editButton);
+        buttonPanel.add(saveButton);
+        buttonPanel.add(loadButton);
 
         ActionListener addButtonListener = new AddButtonListener(this, addButton);
         addButton.addActionListener(addButtonListener);
@@ -194,15 +193,12 @@ public class RentalAppGUI extends JFrame {
         ActionListener cancelButtonListener = new CancelButtonListener(this, cancelButton);
         cancelButton.addActionListener(cancelButtonListener);
 
-        //ActionListener saveButtonListener = new SaveButtonListener(this, saveButton);
-        //saveButton.addActionListener(saveButtonListener);
+        ActionListener saveButtonListener = new SaveButtonListener(this, saveButton);
+        saveButton.addActionListener(saveButtonListener);
 
         //ActionListener loadButtonListener = new LoadButtonListener(this, loadButton);
         //loadButton.addActionListener(loadButtonListener);
 
         return buttonPanel;
     }
-
-
-
 }

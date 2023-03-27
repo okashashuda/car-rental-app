@@ -23,28 +23,11 @@ public class CancelButtonListener implements ActionListener {
         } else {
             rentalAppGUI.listModel.remove(index);
 
-            if (rentalAppGUI.listModel.isEmpty()) {
-                rentalAppGUI.cancelButton.setEnabled(false);
-            } else {
-                if (index == rentalAppGUI.listModel.getSize()) {
-                    index--;
-                }
-                rentalAppGUI.bookingLog.setSelectedIndex(index);
-                rentalAppGUI.bookingLog.ensureIndexIsVisible(index);
+            if (index == rentalAppGUI.listModel.getSize()) {
+                index--;
             }
+            rentalAppGUI.bookingLog.setSelectedIndex(index);
+            rentalAppGUI.bookingLog.ensureIndexIsVisible(index);
         }
-
-
-//        if (rentalAppGUI.listModel.isEmpty()) {
-//            rentalAppGUI.cancelButton.setEnabled(false);
-//        } else {
-//            if (index == rentalAppGUI.listModel.getSize()) {
-//                index--;
-//            } else if (index == -1) {
-//                JOptionPane.showMessageDialog(null, "Please select a booking to cancel.");
-//            }
-//            rentalAppGUI.bookingLog.setSelectedIndex(index);
-//            rentalAppGUI.bookingLog.ensureIndexIsVisible(index);
-//        }
     }
 }

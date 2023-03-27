@@ -1,9 +1,12 @@
 package persistence;
 
 import model.BookingLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import ui.RentalAppGUI;
 
 import java.io.*;
+import java.util.List;
 
 //idea taken from JsonSerializationDemo
 //Represents a writer that writes JSON representation of booking to file
@@ -11,6 +14,7 @@ public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
+    private RentalAppGUI rentalAppGUI;
 
     //EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {
@@ -29,6 +33,16 @@ public class JsonWriter {
     public void write(BookingLog bl) {
         JSONObject json = bl.toJson();
         saveToFile(json.toString(TAB));
+    }
+
+    public void write(RentalAppGUI rentalAppGUI) {
+        JSONArray ja = new JSONArray();
+        for (int i = 0; i < rentalAppGUI.listModel.getSize(); i++) {
+            String booking = (String) rentalAppGUI.listModel.getElementAt(i);
+            JSONObject jo = new JSONObject(booking);
+            ja.put(jo);
+        }
+        saveToFile(ja.toString(TAB));
     }
 
     //MODIFIES: this

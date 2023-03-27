@@ -1,0 +1,46 @@
+package ui;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+
+import org.json.JSONObject;
+import persistence.JsonWriter;
+
+public class SaveButtonListener implements ActionListener {
+
+    private static final String DESTINATION = "./data/bookinglog.json";
+    private RentalAppGUI rentalAppGUI;
+    private JButton button;
+    private JsonWriter jsonWriter;
+
+    public SaveButtonListener(RentalAppGUI rentalAppGUI, JButton button) {
+        this.rentalAppGUI = rentalAppGUI;
+        this.button = button;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            jsonWriter = new JsonWriter(DESTINATION);
+            jsonWriter.open();
+            jsonWriter.write(rentalAppGUI);
+            jsonWriter.close();
+            JOptionPane.showMessageDialog(null, "SAVED TO: " + DESTINATION);
+        } catch (FileNotFoundException exception) {
+            JOptionPane.showMessageDialog(null, "CANNOT WRITE TO FILE: " + DESTINATION);
+        }
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("firstName", rentalAppGUI.firstNameField.getText());
+        json.put("lastName", rentalAppGUI.lastNameField.getText());
+        json.put("age", rentalAppGUI.ageField.getText());
+        json.put("car", rentalAppGUI.carField.getSelectedItem());
+        json.put("pickup", rentalAppGUI.pickupDateField.getText());
+        json.put("dropoff", rentalAppGUI.dropoffDateField.getText());
+        return json;
+    }
+}
