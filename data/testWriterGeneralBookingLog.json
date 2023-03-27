@@ -1,10 +1,1 @@
-{"rentals": [{
-    "firstName": "Ken",
-    "lastName": "Adams",
-    "year": 2020,
-    "dropoff": "2023-03-24",
-    "pickup": "2023-03-20",
-    "model": "Civic",
-    "make": "Honda",
-    "age": 25
-}]}
+[]

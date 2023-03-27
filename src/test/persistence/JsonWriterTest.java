@@ -1,9 +1,7 @@
 package persistence;
 
-import model.BookingLog;
-import model.Car;
-import model.Customer;
-import model.Rental;
+import model.*;
+import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
@@ -72,6 +70,22 @@ public class JsonWriterTest {
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
+        }
+    }
+
+    @Test
+    public void testWriterGeneralBookingGUI() {
+        JSONArray bookings = new JSONArray();
+        try {
+//            Booking b = new Booking("Ken", "Adams", 25,
+//                    "2020 Honda Civic",
+//                    "2023-03-03", "2023-03-05");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookingLog.json");
+            writer.open();
+            writer.write(bookings);
+            writer.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
