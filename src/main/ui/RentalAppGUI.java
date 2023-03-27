@@ -183,10 +183,10 @@ public class RentalAppGUI extends JFrame {
         buttonPanel.setBorder(BorderFactory.createTitledBorder("Actions"));
         buttonPanel.add(addButton);
         buttonPanel.add(cancelButton);
-        buttonPanel.add(viewButton);
-        buttonPanel.add(editButton);
-        buttonPanel.add(saveButton);
-        buttonPanel.add(loadButton);
+        //buttonPanel.add(viewButton);
+        //buttonPanel.add(editButton);
+        //buttonPanel.add(saveButton);
+        //buttonPanel.add(loadButton);
 
         ActionListener addButtonListener = new AddButtonListener(this, addButton);
         addButton.addActionListener(addButtonListener);
