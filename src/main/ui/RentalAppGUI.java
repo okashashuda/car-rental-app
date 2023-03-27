@@ -1,15 +1,20 @@
 package ui;
 
+import model.Booking;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //majority of the code for this phase was inspired by https://www.javatpoint.com/java-gridbaglayout
 //the idea for the panel border was taken from https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
 public class RentalAppGUI extends JFrame {
 
     protected JList<String> bookingLog;
-    public DefaultListModel listModel;
+    protected List<Booking> bookingList = new ArrayList<>();
+    protected DefaultListModel listModel;
 
     protected JButton addButton;
     protected JButton cancelButton;
@@ -200,5 +205,13 @@ public class RentalAppGUI extends JFrame {
         //loadButton.addActionListener(loadButtonListener);
 
         return buttonPanel;
+    }
+
+    public void addBookingToList(Booking booking) {
+        bookingList.add(booking);
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 }

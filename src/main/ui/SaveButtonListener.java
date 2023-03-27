@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.List;
 
+import model.Booking;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.JsonWriter;
 
@@ -25,7 +28,15 @@ public class SaveButtonListener implements ActionListener {
         try {
             jsonWriter = new JsonWriter(DESTINATION);
             jsonWriter.open();
-            jsonWriter.write(rentalAppGUI);
+            JSONArray ja = new JSONArray();
+            List<Booking> bookings = rentalAppGUI.getBookingList();
+            for (Booking booking : bookings) {
+                JSONObject jo = booking.toJson();
+                //System.out.println("json obj: " + jo.toString());
+                ja.put(jo);
+
+            }
+            jsonWriter.write(ja);
             jsonWriter.close();
             JOptionPane.showMessageDialog(null, "SAVED TO: " + DESTINATION);
         } catch (FileNotFoundException exception) {

@@ -1,5 +1,7 @@
 package ui;
 
+import model.Booking;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +16,7 @@ public class AddButtonListener implements ActionListener {
         this.button = button;
     }
 
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = rentalAppGUI.bookingLog.getSelectedIndex();
@@ -23,6 +26,19 @@ public class AddButtonListener implements ActionListener {
                 || rentalAppGUI.dropoffDateField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill out all fields");
         } else {
+            // Create a new booking from user input
+            Booking booking = new Booking(
+                    rentalAppGUI.firstNameField.getText(),
+                    rentalAppGUI.lastNameField.getText(),
+                    Integer.parseInt(rentalAppGUI.ageField.getText()),
+                    rentalAppGUI.carField.getSelectedItem().toString(),
+                    rentalAppGUI.pickupDateField.getText(),
+                    rentalAppGUI.dropoffDateField.getText()
+            );
+
+            // Add the booking to the booking log list in the GUI
+            rentalAppGUI.addBookingToList(booking);
+
             rentalAppGUI.listModel.addElement(rentalAppGUI.firstNameField.getText() + " "
                     + rentalAppGUI.lastNameField.getText());
             rentalAppGUI.firstNameField.setText("");
