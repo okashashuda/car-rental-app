@@ -4,8 +4,10 @@ import org.json.JSONObject;
 
 import java.time.LocalDate;
 
+//creates individual bookings based on the information entered into the GUI
 public class Booking {
 
+    //fields
     private String firstName;
     private String lastName;
     private int age;
@@ -22,30 +24,7 @@ public class Booking {
         this.dropoffDate = LocalDate.parse(dropoffDate);
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getCar() {
-        return car;
-    }
-
-    public LocalDate getPickupDate() {
-        return pickupDate;
-    }
-
-    public LocalDate getDropoffDate() {
-        return dropoffDate;
-    }
-
+    //creates JSON representation of each booking that is entered into the GUI
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("firstName", firstName);
@@ -57,14 +36,48 @@ public class Booking {
         return json;
     }
 
-//    public static Booking fromJson(JSONObject json) {
-//        String firstName = json.getString("firstName");
-//        String lastName = json.getString("lastName");
-//        int age = json.getInt("age");
-//        String car = json.getString("car");
-//        String pickupDate = json.getString("pickup");
-//        String dropoffDate = json.getString("dropoff");
-//        return new Booking(firstName, lastName, age, car, pickupDate, dropoffDate);
-//    }
+    public static Booking fromJson(JSONObject json) {
+        String firstName = json.getString("firstName");
+        String lastName = json.getString("lastName");
+        int age = json.getInt("age");
+        String car = json.getString("car");
+        String pickupDate = json.getString("pickup");
+        String dropoffDate = json.getString("dropoff");
+
+        return new Booking(firstName, lastName, age, car, pickupDate, dropoffDate);
+    }
+
+
+    //SIMPLE GETTERS
+
+    //returns first name from GUI field
+    public String getFirstName() {
+        return firstName;
+    }
+
+    //returns last name from GUI field
+    public String getLastName() {
+        return lastName;
+    }
+
+    //returns age from GUI field
+    public int getAge() {
+        return age;
+    }
+
+    //returns car from GUI field
+    public String getCar() {
+        return car;
+    }
+
+    //returns pickup date from GUI field
+    public LocalDate getPickupDate() {
+        return pickupDate;
+    }
+
+    //returns dropoff date from GUI field
+    public LocalDate getDropoffDate() {
+        return dropoffDate;
+    }
 }
 

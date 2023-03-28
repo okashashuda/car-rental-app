@@ -6,8 +6,8 @@ public class Main {
 
     //idea taken from JsonSerializationDemo
     public static void main(String[] args) throws FileNotFoundException {
-        //new RentalApp();
-        new RentalAppGUI();
+        new RentalApp();
+        //new RentalAppGUI();
 
 //        try {
 //            new RentalApp();

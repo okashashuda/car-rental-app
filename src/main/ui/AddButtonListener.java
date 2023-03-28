@@ -27,7 +27,6 @@ public class AddButtonListener implements ActionListener {
         } else {
             Booking booking = getBooking();
 
-
             // Add the booking to the booking log list in the GUI
             rentalAppGUI.addBookingToList(booking);
 

@@ -22,6 +22,7 @@ public class CancelButtonListener implements ActionListener {
             JOptionPane.showMessageDialog(null, "Please select a booking to cancel.");
         } else {
             rentalAppGUI.listModel.remove(index);
+            rentalAppGUI.bookingList.remove(index);
 
             if (index == rentalAppGUI.listModel.getSize()) {
                 index--;

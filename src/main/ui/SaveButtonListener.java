@@ -32,9 +32,8 @@ public class SaveButtonListener implements ActionListener {
             List<Booking> bookings = rentalAppGUI.getBookingList();
             for (Booking booking : bookings) {
                 JSONObject jo = booking.toJson();
-                //System.out.println("json obj: " + jo.toString());
+                System.out.println("json obj: " + jo.toString());
                 ja.put(jo);
-
             }
             jsonWriter.write(ja);
             jsonWriter.close();
@@ -42,16 +41,5 @@ public class SaveButtonListener implements ActionListener {
         } catch (FileNotFoundException exception) {
             JOptionPane.showMessageDialog(null, "CANNOT WRITE TO FILE: " + DESTINATION);
         }
-    }
-
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("firstName", rentalAppGUI.firstNameField.getText());
-        json.put("lastName", rentalAppGUI.lastNameField.getText());
-        json.put("age", rentalAppGUI.ageField.getText());
-        json.put("car", rentalAppGUI.carField.getSelectedItem());
-        json.put("pickup", rentalAppGUI.pickupDateField.getText());
-        json.put("dropoff", rentalAppGUI.dropoffDateField.getText());
-        return json;
     }
 }

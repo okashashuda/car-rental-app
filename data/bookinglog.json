@@ -1,26 +1,10 @@
-[
-    {
-        "firstName": "jj",
-        "lastName": "jj",
-        "car": "2020 Honda Civic",
-        "dropoff": "2023-03-03",
-        "pickup": "2023-03-03",
-        "age": 22
-    },
-    {
-        "firstName": "kk",
-        "lastName": "kk",
-        "car": "2022 Ford Explorer",
-        "dropoff": "2023-05-06",
-        "pickup": "2023-05-05",
-        "age": 25
-    },
-    {
-        "firstName": "ll",
-        "lastName": "ll",
-        "car": "2022 Ford Explorer",
-        "dropoff": "2023-04-04",
-        "pickup": "2023-04-04",
-        "age": 30
-    }
-]
+{"rentals": [{
+    "firstName": "Ken",
+    "lastName": "Adams",
+    "year": 2020,
+    "dropoff": "2023-03-05",
+    "pickup": "2023-03-03",
+    "model": "Civic",
+    "make": "Honda",
+    "age": 23
+}]}

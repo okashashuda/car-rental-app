@@ -32,6 +32,8 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
+    //MODIFIES: this
+    //EFFECTS: writes JSON representation of workroom to file based on the bookings from GUI
     public void write(JSONArray bookings) {
         JSONArray json = bookings;
         saveToFile(json.toString(TAB));

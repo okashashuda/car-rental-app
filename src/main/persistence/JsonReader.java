@@ -1,9 +1,6 @@
 package persistence;
 
-import model.BookingLog;
-import model.Car;
-import model.Customer;
-import model.Rental;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,6 +27,20 @@ public class JsonReader {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBookingLog(jsonObject);
+    }
+
+    //EFFECTS: read the JSONArray (which is the .json file) and returns it;
+    //         throws IOException if an error occurs reading data from file
+    public JSONArray read(String source) throws IOException {
+        String jsonData = readFile(source);
+        JSONArray jsonArray = new JSONArray(jsonData);
+        JSONArray bookings = new JSONArray();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            Booking booking = parseBooking(jsonObject);
+            bookings.put(booking);
+        }
+        return bookings;
     }
 
     //EFFECTS: reads source file as string and returns it
@@ -72,5 +83,17 @@ public class JsonReader {
         LocalDate dropoff = LocalDate.parse(dropoffStr);
 
         return new Rental(customer, car, pickup, dropoff);
+    }
+
+    //EFFECTS: parses booking (which is each individual booking from GUI) from JSON object and returns it
+    private Booking parseBooking(JSONObject jsonObject) {
+        String firstName = jsonObject.getString("firstName");
+        String lastName = jsonObject.getString("lastName");
+        int age = jsonObject.getInt("age");
+        String car = jsonObject.getString("car");
+        String pickup = jsonObject.getString("pickup");
+        String dropoff = jsonObject.getString("dropoff");
+
+        return new Booking(firstName, lastName, age, car, pickup, dropoff);
     }
 }

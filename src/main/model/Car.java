@@ -1,13 +1,12 @@
 package model;
 
-// represents car with make, model, and year
+//represents car with make, model, and year
 public class Car {
 
     //fields
     private String make;
     private String model;
     private int year;
-    private boolean available;
 
     public Car(String make, String model, int year) {
         this.make = make;

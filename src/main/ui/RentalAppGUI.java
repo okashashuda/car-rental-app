@@ -80,9 +80,9 @@ public class RentalAppGUI extends JFrame {
     //INDIVIDUAL ITEMS IN BOOKING LIST
     private void getRentalList() {
         listModel = new DefaultListModel<>();
-        listModel.addElement("Rental 1");
-        listModel.addElement("Rental 2");
-        listModel.addElement("Rental 3");
+//        listModel.addElement("Rental 1");
+//        listModel.addElement("Rental 2");
+//        listModel.addElement("Rental 3");
     }
 
     //CUSTOMER INFO
@@ -201,8 +201,8 @@ public class RentalAppGUI extends JFrame {
         ActionListener saveButtonListener = new SaveButtonListener(this, saveButton);
         saveButton.addActionListener(saveButtonListener);
 
-        //ActionListener loadButtonListener = new LoadButtonListener(this, loadButton);
-        //loadButton.addActionListener(loadButtonListener);
+        ActionListener loadButtonListener = new LoadButtonListener(this, loadButton);
+        loadButton.addActionListener(loadButtonListener);
 
         return buttonPanel;
     }
@@ -211,7 +211,12 @@ public class RentalAppGUI extends JFrame {
         bookingList.add(booking);
     }
 
+    public void clearBookingList() {
+        bookingList.clear();
+    }
+
     public List<Booking> getBookingList() {
         return bookingList;
     }
+
 }

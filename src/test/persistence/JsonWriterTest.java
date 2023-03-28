@@ -2,6 +2,7 @@ package persistence;
 
 import model.*;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
@@ -67,7 +68,6 @@ public class JsonWriterTest {
             bl = reader.read();
             List<Rental> bookingsList = bl.getAllBookings();
             assertEquals(1, bl.getSize());
-
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -76,14 +76,20 @@ public class JsonWriterTest {
     @Test
     public void testWriterGeneralBookingGUI() {
         JSONArray bookings = new JSONArray();
+        JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookingLog.json");
         try {
-//            Booking b = new Booking("Ken", "Adams", 25,
-//                    "2020 Honda Civic",
-//                    "2023-03-03", "2023-03-05");
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralBookingLog.json");
+            Booking b = new Booking("Ken", "Adams", 25,
+                    "2020 Honda Civic",
+                    "2023-03-03", "2023-03-05");
+            JSONObject jo = b.toJson();
+            bookings.put(jo);
             writer.open();
             writer.write(bookings);
             writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterGeneralBookingLog.json");
+            bookings = reader.read("./data/testWriterGeneralBookingLog.json");
+            assertEquals(1, bookings.length());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
