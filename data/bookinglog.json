@@ -1,10 +1,8 @@
-{"rentals": [{
+[{
     "firstName": "Ken",
     "lastName": "Adams",
-    "year": 2020,
+    "car": "2022 Ford Explorer",
     "dropoff": "2023-03-05",
     "pickup": "2023-03-03",
-    "model": "Civic",
-    "make": "Honda",
     "age": 23
-}]}
+}]

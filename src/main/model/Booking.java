@@ -36,17 +36,6 @@ public class Booking {
         return json;
     }
 
-    public static Booking fromJson(JSONObject json) {
-        String firstName = json.getString("firstName");
-        String lastName = json.getString("lastName");
-        int age = json.getInt("age");
-        String car = json.getString("car");
-        String pickupDate = json.getString("pickup");
-        String dropoffDate = json.getString("dropoff");
-
-        return new Booking(firstName, lastName, age, car, pickupDate, dropoffDate);
-    }
-
 
     //SIMPLE GETTERS
 
