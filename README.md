@@ -38,3 +38,5 @@ JsonSerializationDemo*
 - https://www.guru99.com/java-swing-gui.html
 - https://www.javatpoint.com/java-jcombobox
 - https://www.youtube.com/watch?v=5o3fMLPY7qY
+- https://www.youtube.com/watch?v=ywLKpHw1MjQ
+- https://docs.oracle.com/javase/tutorial/uiswing/components/list.html (specifically ListDemo.java)

@@ -42,7 +42,6 @@ public class RentalAppGUI extends JFrame {
         JFrame mainFrame = new JFrame("Rental Car App");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(800, 500);
-        //mainFrame.setLocationRelativeTo(null); //DELETE LATER, IF NEEDED
 
         //this is the individual list items (rentals) in the left panel (with booking log)
         getRentalList();
@@ -86,15 +85,8 @@ public class RentalAppGUI extends JFrame {
     }
 
     //CUSTOMER INFO
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private JPanel getCustomerInfo() {
-        firstNameLabel = new JLabel("First Name:");
-        lastNameLabel = new JLabel("Last Name:");
-        ageLabel = new JLabel("Age: (18+ to rent)");
-
-        firstNameField = new JTextField(20);
-        lastNameField = new JTextField(20);
-        ageField = new JTextField(3);
+        setCustomerPanel(); //creates the labels and fields for the customer panel
 
         JPanel customerInfo = new JPanel(new GridBagLayout());
         customerInfo.setBorder(BorderFactory.createTitledBorder("Customer Information"));
@@ -118,30 +110,33 @@ public class RentalAppGUI extends JFrame {
         customerInfo.add(lastNameField, customerGrid);
 
         customerGrid.gridx = 2;
-        //customerGrid.gridy = 1;
+        customerGrid.gridy = 1;
         customerInfo.add(ageLabel, customerGrid);
 
         customerGrid.gridx = 3;
-        //customerGrid.gridy = 1;
+        customerGrid.gridy = 1;
         customerInfo.add(ageField, customerGrid);
 
         return customerInfo;
     }
 
-    //CAR INFO
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    private JPanel getCarInfo() {
-        carLabel = new JLabel("Car:");
-        pickupDateLabel = new JLabel("Start Date: (yyyy-mm-dd)");
-        dropoffDateLabel = new JLabel("End Date: (yyyy-mm-dd)");
+    //creates the labels and fields for the panel that contains customer info
+    private void setCustomerPanel() {
+        firstNameLabel = new JLabel("First Name:");
+        lastNameLabel = new JLabel("Last Name:");
+        ageLabel = new JLabel("Age: (18+ to rent)");
 
-        carField = new JComboBox<String>();
-        pickupDateField = new JTextField(20);
-        dropoffDateField = new JTextField(20);
+        firstNameField = new JTextField(20);
+        lastNameField = new JTextField(20);
+        ageField = new JTextField(3);
+    }
+
+    //CAR INFO
+    private JPanel getCarInfo() {
+        setCarPanel(); //creates the labels and fields for the car panel
 
         //ADD MORE CARS HERE
-        carField.addItem("2020 Honda Civic");
-        carField.addItem("2022 Ford Explorer");
+        addCars();
 
         JPanel carInfo = new JPanel(new GridBagLayout());
         carInfo.setBorder(BorderFactory.createTitledBorder("Car Information"));
@@ -172,6 +167,23 @@ public class RentalAppGUI extends JFrame {
         carInfo.add(dropoffDateField, carGrid);
 
         return carInfo;
+    }
+
+    //creates the labels and fields for the panel that contains car info
+    private void setCarPanel() {
+        carLabel = new JLabel("Car:");
+        pickupDateLabel = new JLabel("Start Date: (yyyy-mm-dd)");
+        dropoffDateLabel = new JLabel("End Date: (yyyy-mm-dd)");
+
+        carField = new JComboBox<String>();
+        pickupDateField = new JTextField(20);
+        dropoffDateField = new JTextField(20);
+    }
+
+    //ADD CARS HERE
+    private void addCars() {
+        carField.addItem("2020 Honda Civic");
+        carField.addItem("2022 Ford Explorer");
     }
 
     //BUTTONS

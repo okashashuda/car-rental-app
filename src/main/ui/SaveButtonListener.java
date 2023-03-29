@@ -32,7 +32,7 @@ public class SaveButtonListener implements ActionListener {
             List<Booking> bookings = rentalAppGUI.getBookingList();
             for (Booking booking : bookings) {
                 JSONObject jo = booking.toJson();
-                System.out.println("json obj: " + jo.toString());
+                //System.out.println("json obj: " + jo.toString());
                 ja.put(jo);
             }
             jsonWriter.write(ja);

@@ -16,10 +16,15 @@ public class AddButtonListener implements ActionListener {
         this.button = button;
     }
 
+    //if none of the fields are empty, then once the 'Add' button is clicked,
+    //it creates a booking with user info and clears all the fields for the next booking to be created
+    //it also creates a pop-up window that displays a random picture (this is to satisfy phase 3 requirements)
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = rentalAppGUI.bookingLog.getSelectedIndex();
 
+        //checks if any of the fields are empty.
+        //if yes, displays message box
         if (rentalAppGUI.firstNameField.getText().isEmpty() || rentalAppGUI.lastNameField.getText().isEmpty()
                 || rentalAppGUI.ageField.getText().isEmpty() || rentalAppGUI.pickupDateField.getText().isEmpty()
                 || rentalAppGUI.dropoffDateField.getText().isEmpty()) {
@@ -27,8 +32,9 @@ public class AddButtonListener implements ActionListener {
         } else {
             Booking booking = getBooking();
 
-            // Add the booking to the booking log list in the GUI
-            rentalAppGUI.addBookingToList(booking);
+            visualComponent(); //image appears when booking is successfully to BookingList
+
+            rentalAppGUI.addBookingToList(booking); //add the booking to the booking log list in the GUI
 
             rentalAppGUI.listModel.addElement(rentalAppGUI.firstNameField.getText() + " "
                     + rentalAppGUI.lastNameField.getText());
@@ -42,8 +48,19 @@ public class AddButtonListener implements ActionListener {
         }
     }
 
+    //this the visual component (image) for phase 3 requirement.
+    //creates a new frame, and displays a chosen image onto it
+    private void visualComponent() {
+        JFrame picture = new JFrame();
+        ImageIcon visual = new ImageIcon("data/meme.PNG");
+        picture.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        picture.setSize(visual.getIconWidth(), visual.getIconHeight());
+        picture.add(new JLabel(visual));
+        picture.setVisible(true);
+    }
+
+    //create a new booking from user input
     private Booking getBooking() {
-        // Create a new booking from user input
         Booking booking = new Booking(
                 rentalAppGUI.firstNameField.getText(),
                 rentalAppGUI.lastNameField.getText(),
