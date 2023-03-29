@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.JsonWriter;
 
+//this is what happens when the 'Save' button in the GUI is clicked
+//for every booking in the BookingLog panel in the GUI, it will convert it to JSON format, then write it to file
 public class SaveButtonListener implements ActionListener {
 
     private static final String DESTINATION = "./data/bookinglog.json";
@@ -18,11 +20,13 @@ public class SaveButtonListener implements ActionListener {
     private JButton button;
     private JsonWriter jsonWriter;
 
+    //CONSTRUCTOR
     public SaveButtonListener(RentalAppGUI rentalAppGUI, JButton button) {
         this.rentalAppGUI = rentalAppGUI;
         this.button = button;
     }
 
+    //EFFECTS: saves booking to file
     @Override
     public void actionPerformed(ActionEvent e) {
         try {

@@ -10,6 +10,7 @@ import java.util.List;
 
 //majority of the code for this phase was inspired by https://www.javatpoint.com/java-gridbaglayout
 //the idea for the panel border was taken from https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
+//GUI for a car rental application
 public class RentalAppGUI extends JFrame {
 
     protected JList<String> bookingLog;
@@ -37,6 +38,7 @@ public class RentalAppGUI extends JFrame {
     protected JTextField pickupDateField;
     protected JTextField dropoffDateField;
 
+    //CONSTRUCTOR: creates the frame, all the panels, labels and buttons
     public RentalAppGUI() {
         //SETUP MAIN FRAME
         JFrame mainFrame = new JFrame("Rental Car App");
@@ -219,13 +221,23 @@ public class RentalAppGUI extends JFrame {
         return buttonPanel;
     }
 
+    //given a booking, it will add to the bookingList in the GUI
     public void addBookingToList(Booking booking) {
         bookingList.add(booking);
     }
 
+    //given an index, it will remove from the bookingList in the GUI
+    public void removeBookingFromList(int index) {
+        bookingList.remove(index);
+    }
+
+    //clears the entire bookingList
     public void clearBookingList() {
         bookingList.clear();
     }
+
+
+    //SIMPLE GETTERS
 
     public List<Booking> getBookingList() {
         return bookingList;

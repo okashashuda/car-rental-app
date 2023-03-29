@@ -14,7 +14,7 @@ public class BookingLog {
     private int position; //represents position (0, 1, 2...) in list of rentals
     private int bookingID; //bookingID = position + 1 (so its 1, 2, 3...)
 
-    //creates list of rentals that is empty
+    //CONSTRUCTOR: creates list of rentals that is empty
     public BookingLog() {
         rentals = new ArrayList<>();
     }

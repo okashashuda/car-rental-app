@@ -40,3 +40,6 @@ JsonSerializationDemo*
 - https://www.youtube.com/watch?v=5o3fMLPY7qY
 - https://www.youtube.com/watch?v=ywLKpHw1MjQ
 - https://docs.oracle.com/javase/tutorial/uiswing/components/list.html (specifically ListDemo.java)
+- https://stackoverflow.com/questions/672916/how-to-get-image-height-and-width-using-java
+- https://www.reddit.com/r/ProgrammerHumor/comments/124tawf/starbucks_intern_hard_at_work/
+- https://stackoverflow.com/questions/18027833/adding-image-to-jframe

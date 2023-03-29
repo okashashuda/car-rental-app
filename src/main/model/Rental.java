@@ -19,6 +19,7 @@ public class Rental {
     private double totalCost;
     private int numOfDays;
 
+    //CONSTRUCTOR: creates rental with a customer, car, pickup date and dropoff date
     public Rental(Customer customer, Car car, LocalDate pickup, LocalDate dropoff) {
         this.customer = customer;
         this.car = car;

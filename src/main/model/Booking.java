@@ -15,6 +15,7 @@ public class Booking {
     private LocalDate pickupDate;
     private LocalDate dropoffDate;
 
+    //CONSTRUCTOR: creates booking with first name, last name, age, car, pickup date and dropoff date from info in GUI
     public Booking(String firstName, String lastName, int age, String car, String pickupDate, String dropoffDate) {
         this.firstName = firstName;
         this.lastName = lastName;

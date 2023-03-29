@@ -24,6 +24,7 @@ public class RentalApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    //CONSTRUCTOR: runs the console-based UI
     public RentalApp() throws FileNotFoundException {
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(DESTINATION);

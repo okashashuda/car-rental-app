@@ -8,6 +8,7 @@ public class Car {
     private String model;
     private int year;
 
+    //CONSTRUCTOR: creates a car with make, model and year
     public Car(String make, String model, int year) {
         this.make = make;
         this.model = model;

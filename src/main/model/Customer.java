@@ -11,6 +11,7 @@ public class Customer {
     private String lastName;
     private int age;
 
+    //CONSTRUCTOR: creates customer with first name, last name and age
     public Customer(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
