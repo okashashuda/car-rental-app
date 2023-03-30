@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//this part of the project is based on the ListDemo project from:
+//          https://docs.oracle.com/javase/tutorial/uiswing/components/list.html
 //this is what happens when the 'Add' button in the GUI is clicked
 //if none of the fields are empty, it will add to BookingLog panel in the GUI
 //then it will clear all the fields for the next booking to be created

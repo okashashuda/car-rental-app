@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//this part of the project is based on the ListDemo project from:
+//          https://docs.oracle.com/javase/tutorial/uiswing/components/list.html
 //this is what happens when the 'Cancel' button in the GUI is clicked
 //if a booking is selected, it will remove it from the BookingLog panel in the GUI
 public class CancelButtonListener implements ActionListener {
