@@ -14,6 +14,8 @@ import java.util.stream.Stream;
 //idea taken from JsonSerializationDemo
 //Represents a reader that reads JSON representation of booking from file
 public class JsonReader {
+
+    //fields
     private String source;
 
     //EFFECTS: constructs reader to read from source file

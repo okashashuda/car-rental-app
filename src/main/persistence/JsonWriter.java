@@ -9,7 +9,11 @@ import java.io.*;
 //idea taken from JsonSerializationDemo
 //Represents a writer that writes JSON representation of booking to file
 public class JsonWriter {
+
+    //constants
     private static final int TAB = 4;
+
+    //fields
     private PrintWriter writer;
     private String destination;
 
