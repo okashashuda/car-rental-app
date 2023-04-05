@@ -13,11 +13,12 @@ public class BookingLog {
     private List<Rental> rentals;
     private int position; //represents position (0, 1, 2...) in list of rentals
     private int bookingID; //bookingID = position + 1 (so its 1, 2, 3...)
-    private static List<Booking> bookingList = new ArrayList<>();
+    private static List<Booking> bookingList;
 
     //CONSTRUCTOR: creates list of rentals that is empty
     public BookingLog() {
         rentals = new ArrayList<>();
+        bookingList = new ArrayList<>();
     }
 
     //add new rental to list of rentals

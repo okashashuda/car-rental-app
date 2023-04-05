@@ -6,11 +6,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookingLogTest {
-    private BookingLog testBookings;
+    private BookingLog testRentals;
+    private BookingLog testBookingList;
     private Customer testCustomer1;
     private Customer testCustomer2;
     private Car testCar1;
@@ -23,12 +26,14 @@ public class BookingLogTest {
     private Rental testRental1;
     private Rental testRental2;
     private Rental testUpdatedRental2;
+    private Booking testBooking;
     private JSONObject testJsonObject;
     private JSONArray testJsonArray;
 
     @BeforeEach
     public void setUp() {
-        testBookings = new BookingLog();
+        testRentals = new BookingLog();
+        testBookingList = new BookingLog();
         testCustomer1 = new Customer("Ken", "Adams", 25);
         testCustomer2 = new Customer("Joe", "Black", 23);
         testCar1 = new Car("Honda", "Civic", 2020);
@@ -41,101 +46,125 @@ public class BookingLogTest {
         testRental1 = new Rental(testCustomer1, testCar1, testPickup1, testDropoff1);
         testRental2 = new Rental(testCustomer2, testCar2, testPickup2, testDropoff2);
         testUpdatedRental2 = new Rental(testCustomer2, testCar2, testPickup2, testUpdatedDropoff2);
+        testBooking = new Booking("Ken", "Adams", 33,
+                "2020 Honda Civic", "2023-03-20", "2023-03-24");
     }
 
     @Test
     public void testConstructor() {
         //Customer, Car, and Rental already been tested in their respective test classes
-        assertEquals(0, testBookings.getSize());
+        assertEquals(0, testRentals.getSize());
     }
 
     @Test
     public void testGetBookingID() {
-        testBookings.addRental(testRental1);
-        assertEquals(0, testBookings.getPosition(testRental1));
-        assertEquals(1, testBookings.getBookingID(testBookings.getPosition(testRental1)));
-        testBookings.addRental(testRental2);
-        assertEquals(1, testBookings.getPosition(testRental2));
-        assertEquals(2, testBookings.getBookingID(testBookings.getPosition(testRental2)));
+        testRentals.addRental(testRental1);
+        assertEquals(0, testRentals.getPosition(testRental1));
+        assertEquals(1, testRentals.getBookingID(testRentals.getPosition(testRental1)));
+        testRentals.addRental(testRental2);
+        assertEquals(1, testRentals.getPosition(testRental2));
+        assertEquals(2, testRentals.getBookingID(testRentals.getPosition(testRental2)));
     }
 
     @Test
     public void testAddRental() {
-        assertEquals(0, testBookings.getSize());
-        testBookings.addRental(testRental1);
-        assertEquals(1, testBookings.getSize());
+        assertEquals(0, testRentals.getSize());
+        testRentals.addRental(testRental1);
+        assertEquals(1, testRentals.getSize());
     }
 
     @Test
     public void testAddMultipleRental() {
-        assertEquals(0, testBookings.getSize());
-        testBookings.addRental(testRental1);
-        assertEquals(1, testBookings.getSize());
-        testBookings.addRental(testRental2);
-        assertEquals(2, testBookings.getSize());
+        assertEquals(0, testRentals.getSize());
+        testRentals.addRental(testRental1);
+        assertEquals(1, testRentals.getSize());
+        testRentals.addRental(testRental2);
+        assertEquals(2, testRentals.getSize());
     }
 
     @Test
     public void testToString() {
-        testBookings.addRental(testRental1);
-        assertEquals("Booking Log: \n" + testBookings.getBookingID(testBookings.getPosition(testRental1))
+        testRentals.addRental(testRental1);
+        assertEquals("Booking Log: \n" + testRentals.getBookingID(testRentals.getPosition(testRental1))
                 + ". " + "Rental: \n -Customer: " + testCustomer1.getFirstName() + " " + testCustomer1.getLastName()
                 + "\n" + " -Car: " + testCar1.getMake() + " " + testCar1.getModel()
                 + "\n" + " -Pickup: " + testPickup1
-                + "\n" + " -Dropoff: " + testDropoff1 + "\n\n", testBookings.toString());
+                + "\n" + " -Dropoff: " + testDropoff1 + "\n\n", testRentals.toString());
     }
 
     @Test
     public void testCancelRental() {
-        testBookings.addRental(testRental1); //position 0, bookingID 1
-        testBookings.addRental(testRental2); //position 1, bookingID 2
-        assertEquals(2, testBookings.getSize());
-        testBookings.cancelRental(1); //removes booking that was at position 0 (bookingID 1)
-        assertEquals(1, testBookings.getSize()); //only booking that was in position 1 (bookingID 2) remains
-        assertEquals(2, testBookings.getBookingID(1)); //bookingID is 2 of booking at position 1
-        assertEquals(0, testBookings.getPosition(testRental2));
+        testRentals.addRental(testRental1); //position 0, bookingID 1
+        testRentals.addRental(testRental2); //position 1, bookingID 2
+        assertEquals(2, testRentals.getSize());
+        testRentals.cancelRental(1); //removes booking that was at position 0 (bookingID 1)
+        assertEquals(1, testRentals.getSize()); //only booking that was in position 1 (bookingID 2) remains
+        assertEquals(2, testRentals.getBookingID(1)); //bookingID is 2 of booking at position 1
+        assertEquals(0, testRentals.getPosition(testRental2));
     }
 
     @Test
     public void testViewRental() {
-        testBookings.addRental(testRental1); //position 0, bookingID 1
-        testBookings.addRental(testRental2); //position 1, bookingID 2
-        assertEquals(testRental1, testBookings.getAllBookings().get(0));
-        assertEquals(testRental2, testBookings.getAllBookings().get(1));
-        assertEquals(1, testBookings.getBookingID(0));
-        assertEquals(testRental1, testBookings.viewRental(1));
-        assertEquals(testRental2, testBookings.viewRental(2));
+        testRentals.addRental(testRental1); //position 0, bookingID 1
+        testRentals.addRental(testRental2); //position 1, bookingID 2
+        assertEquals(testRental1, testRentals.getAllBookings().get(0));
+        assertEquals(testRental2, testRentals.getAllBookings().get(1));
+        assertEquals(1, testRentals.getBookingID(0));
+        assertEquals(testRental1, testRentals.viewRental(1));
+        assertEquals(testRental2, testRentals.viewRental(2));
     }
 
     @Test
     public void testEditRental() {
-        testBookings.addRental(testRental1); //position 0, bookingID 1
-        testBookings.addRental(testRental2); //position 1, bookingID 2
-        testBookings.editRental(2, testUpdatedRental2); //want to update bookingID 2 with UpdatedRental2
-        assertEquals(testRental1, testBookings.getAllBookings().get(0)); //testRental1 is unchanged
-        assertEquals(testUpdatedRental2, testBookings.getAllBookings().get(1)); //testRental2 has been edited
+        testRentals.addRental(testRental1); //position 0, bookingID 1
+        testRentals.addRental(testRental2); //position 1, bookingID 2
+        testRentals.editRental(2, testUpdatedRental2); //want to update bookingID 2 with UpdatedRental2
+        assertEquals(testRental1, testRentals.getAllBookings().get(0)); //testRental1 is unchanged
+        assertEquals(testUpdatedRental2, testRentals.getAllBookings().get(1)); //testRental2 has been edited
     }
 
     @Test
     public void testGetAllBookings() {
-        testBookings.addRental(testRental1);
-        assertEquals(1, testBookings.getAllBookings().size());
-        testBookings.addRental(testRental2);
-        assertEquals(2, testBookings.getAllBookings().size());
+        testRentals.addRental(testRental1);
+        assertEquals(1, testRentals.getAllBookings().size());
+        testRentals.addRental(testRental2);
+        assertEquals(2, testRentals.getAllBookings().size());
     }
 
     @Test
     public void testToJson() {
-        testBookings.addRental(testRental1);
-        testJsonObject = testBookings.toJson();
-        testJsonArray = testBookings.toJson().getJSONArray("rentals");
+        testRentals.addRental(testRental1);
+        testJsonObject = testRentals.toJson();
+        testJsonArray = testRentals.toJson().getJSONArray("rentals");
         assertEquals(1, testJsonArray.length());
         assertEquals(testRental1.toJson().toString(), testJsonArray.getJSONObject(0).toString());
         //the .toString() converts both into JSON text so comparing them is easier.
-        testBookings.addRental(testRental2);
-        testJsonObject = testBookings.toJson();
-        testJsonArray = testBookings.toJson().getJSONArray("rentals");
+        testRentals.addRental(testRental2);
+        testJsonObject = testRentals.toJson();
+        testJsonArray = testRentals.toJson().getJSONArray("rentals");
         assertEquals(2, testJsonArray.length());
         assertEquals(testRental2.toJson().toString(), testJsonArray.getJSONObject(1).toString());
+    }
+
+    @Test
+    public void testAddBookingToList() {
+        testBookingList.addBookingToList(testBooking);
+        assertEquals(1, testBookingList.getBookingList().size());
+    }
+
+    @Test
+    public void testRemoveBookingFromList() {
+        testBookingList.addBookingToList(testBooking);
+        assertEquals(1, testBookingList.getBookingList().size());
+        testBookingList.removeBookingFromList(0);
+        assertEquals(0, testBookingList.getBookingList().size());
+    }
+
+    @Test
+    public void testClearBookingList() {
+        testBookingList.addBookingToList(testBooking);
+        assertEquals(1, testBookingList.getBookingList().size());
+        testBookingList.clearBookingList();
+        assertEquals(0, testBookingList.getBookingList().size());
     }
 }
