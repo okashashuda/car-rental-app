@@ -5,6 +5,9 @@ import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+//booking and rental are almost equivalent, except their format for storing cars is slightly different, so a
+//separate class had to be created. this could be merged together with some extra work
+
 //represents rental with number of days, pickup and drop-off location
 public class Rental {
 

@@ -1,1 +1,8 @@
-[]
+[{
+    "firstName": "Ken",
+    "lastName": "Adams",
+    "car": "2022 Ford Explorer",
+    "dropoff": "2023-04-14",
+    "pickup": "2023-04-04",
+    "age": 30
+}]

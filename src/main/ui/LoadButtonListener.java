@@ -1,6 +1,7 @@
 package ui;
 
 import model.Booking;
+import model.BookingLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.JsonReader;
@@ -31,11 +32,11 @@ public class LoadButtonListener implements ActionListener {
         try {
             jsonReader = new JsonReader(DESTINATION);
             JSONArray ja = jsonReader.read(DESTINATION);
-            rentalAppGUI.clearBookingList();
+            BookingLog.clearBookingList();
             for (int i = 0; i < ja.length(); i++) {
                 Booking booking = (Booking) ja.get(i);
                 rentalAppGUI.listModel.addElement(booking.getFirstName() + " " + booking.getLastName());
-                rentalAppGUI.addBookingToList(booking);
+                BookingLog.addBookingToList(booking);
             }
             JOptionPane.showMessageDialog(null, "LOADED FROM: " + DESTINATION);
         } catch (IOException exception) {

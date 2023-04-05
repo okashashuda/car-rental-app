@@ -1,6 +1,7 @@
 package ui;
 
 import model.Booking;
+import model.BookingLog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +41,7 @@ public class AddButtonListener implements ActionListener {
             visualComponent();
 
             //add the booking to the booking list in the GUI
-            rentalAppGUI.addBookingToList(booking);
+            BookingLog.addBookingToList(booking);
             rentalAppGUI.listModel.addElement(
                     rentalAppGUI.firstNameField.getText() + " " + rentalAppGUI.lastNameField.getText());
 

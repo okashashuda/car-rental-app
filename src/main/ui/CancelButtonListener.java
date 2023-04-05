@@ -1,5 +1,7 @@
 package ui;
 
+import model.BookingLog;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,8 +31,8 @@ public class CancelButtonListener implements ActionListener {
         } else {
 
             //remove the booking from the booking list in the GUI
+            BookingLog.removeBookingFromList(index);
             rentalAppGUI.listModel.remove(index);
-            rentalAppGUI.removeBookingFromList(index);
 
             if (index == rentalAppGUI.listModel.getSize()) {
                 index--;

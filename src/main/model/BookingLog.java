@@ -13,6 +13,7 @@ public class BookingLog {
     private List<Rental> rentals;
     private int position; //represents position (0, 1, 2...) in list of rentals
     private int bookingID; //bookingID = position + 1 (so its 1, 2, 3...)
+    private static List<Booking> bookingList = new ArrayList<>();
 
     //CONSTRUCTOR: creates list of rentals that is empty
     public BookingLog() {
@@ -105,12 +106,32 @@ public class BookingLog {
         return jsonArray;
     }
 
+    //given a booking, it will add to the bookingList in the GUI
+    public static void addBookingToList(Booking booking) {
+        bookingList.add(booking);
+    }
+
+    //given an index, it will remove from the bookingList in the GUI
+    public static void removeBookingFromList(int index) {
+        bookingList.remove(index);
+    }
+
+    //clears the entire bookingList
+    public static void clearBookingList() {
+        bookingList.clear();
+    }
+
 
     //SIMPLE GETTERS
 
-    //return list of all rentals
+    //return list of all rentals; see class-level comment in Rental/Booking class for more
     public List<Rental> getAllBookings() {
         return rentals;
+    }
+
+    //return list of all bookings from GUI; see class-level comment in Rental/Booking class for more
+    public static List<Booking> getBookingList() {
+        return bookingList;
     }
 
     //return size of booking list

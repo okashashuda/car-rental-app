@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import model.Booking;
+import model.BookingLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.JsonWriter;
@@ -33,7 +34,7 @@ public class SaveButtonListener implements ActionListener {
             jsonWriter = new JsonWriter(DESTINATION);
             jsonWriter.open();
             JSONArray ja = new JSONArray();
-            List<Booking> bookings = rentalAppGUI.getBookingList();
+            List<Booking> bookings = BookingLog.getBookingList();
             for (Booking booking : bookings) {
                 JSONObject jo = booking.toJson();
                 //System.out.println("json obj: " + jo.toString());

@@ -221,21 +221,6 @@ public class RentalAppGUI extends JFrame {
         return buttonPanel;
     }
 
-    //given a booking, it will add to the bookingList in the GUI
-    public void addBookingToList(Booking booking) {
-        bookingList.add(booking);
-    }
-
-    //given an index, it will remove from the bookingList in the GUI
-    public void removeBookingFromList(int index) {
-        bookingList.remove(index);
-    }
-
-    //clears the entire bookingList
-    public void clearBookingList() {
-        bookingList.clear();
-    }
-
 
     //SIMPLE GETTERS
 

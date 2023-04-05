@@ -4,6 +4,9 @@ import org.json.JSONObject;
 
 import java.time.LocalDate;
 
+//booking and rental are almost equivalent, except their format for storing cars is slightly different, so a
+//separate class had to be created. this could be merged together with some extra work
+
 //creates individual bookings based on the information entered into the GUI
 public class Booking {
 
