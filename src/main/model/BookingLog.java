@@ -11,14 +11,13 @@ public class BookingLog {
 
     //fields
     private List<Rental> rentals;
+    private static List<Booking> bookingList = new ArrayList<>();
     private int position; //represents position (0, 1, 2...) in list of rentals
     private int bookingID; //bookingID = position + 1 (so its 1, 2, 3...)
-    private static List<Booking> bookingList;
 
     //CONSTRUCTOR: creates list of rentals that is empty
     public BookingLog() {
         rentals = new ArrayList<>();
-        bookingList = new ArrayList<>();
     }
 
     //add new rental to list of rentals
@@ -110,16 +109,26 @@ public class BookingLog {
     //given a booking, it will add to the bookingList in the GUI
     public static void addBookingToList(Booking booking) {
         bookingList.add(booking);
+        EventLog.getInstance().logEvent(new Event("BOOKING ADDED."));
     }
 
     //given an index, it will remove from the bookingList in the GUI
     public static void removeBookingFromList(int index) {
         bookingList.remove(index);
+        EventLog.getInstance().logEvent(new Event("BOOKING REMOVED."));
+        //printLog(EventLog.getInstance());
     }
 
     //clears the entire bookingList
     public static void clearBookingList() {
         bookingList.clear();
+        EventLog.getInstance().logEvent(new Event("ALL BOOKINGS CLEARED."));
+    }
+
+    public static void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n");
+        }
     }
 
 

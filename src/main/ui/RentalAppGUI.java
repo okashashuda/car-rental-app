@@ -1,12 +1,19 @@
 package ui;
 
 import model.Booking;
+import model.BookingLog;
+import model.EventLog;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import static model.BookingLog.printLog;
 
 //majority of the code for this phase was inspired by https://www.javatpoint.com/java-gridbaglayout
 //the idea for the panel border was taken from https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
@@ -14,7 +21,6 @@ import java.util.List;
 public class RentalAppGUI extends JFrame {
 
     protected JList<String> bookingLog;
-    protected List<Booking> bookingList = new ArrayList<>();
     protected DefaultListModel listModel;
 
     protected JButton addButton;
@@ -44,6 +50,7 @@ public class RentalAppGUI extends JFrame {
         JFrame mainFrame = new JFrame("Rental Car App");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(800, 500);
+        mainFrame.addWindowListener(printEventLogToConsole());
 
         //this is the individual list items (rentals) in the left panel (with booking log)
         getRentalList();
@@ -76,6 +83,17 @@ public class RentalAppGUI extends JFrame {
 
         //DISPLAY GUI
         mainFrame.setVisible(true);
+    }
+
+    //when GUI mainframe closing, this method executes, calls BookingLog.printLog method that prints EventLog to console
+    //EFFECTS: when user closes the GUI mainframe, all events in EventLog get printed to console
+    private WindowAdapter printEventLogToConsole() {
+        return new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printLog(EventLog.getInstance());
+            }
+        };
     }
 
     //INDIVIDUAL ITEMS IN BOOKING LIST
@@ -220,12 +238,4 @@ public class RentalAppGUI extends JFrame {
 
         return buttonPanel;
     }
-
-
-    //SIMPLE GETTERS
-
-    public List<Booking> getBookingList() {
-        return bookingList;
-    }
-
 }

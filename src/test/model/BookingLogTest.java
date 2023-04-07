@@ -6,14 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookingLogTest {
     private BookingLog testRentals;
-    private BookingLog testBookingList;
+    private BookingLog testBookingList; //testBookingList is from GUI, testRentals is from console UI
     private Customer testCustomer1;
     private Customer testCustomer2;
     private Car testCar1;
@@ -26,7 +24,7 @@ public class BookingLogTest {
     private Rental testRental1;
     private Rental testRental2;
     private Rental testUpdatedRental2;
-    private Booking testBooking;
+    private Booking testBooking; //different from testRental(s), testBooking is from GUI, testRental is from console UI
     private JSONObject testJsonObject;
     private JSONArray testJsonArray;
 

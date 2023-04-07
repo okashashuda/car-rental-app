@@ -1,8 +1,42 @@
-[{
-    "firstName": "Ken",
-    "lastName": "Adams",
-    "car": "2022 Ford Explorer",
-    "dropoff": "2023-04-14",
-    "pickup": "2023-04-04",
-    "age": 30
-}]
+[
+    {
+        "firstName": "Ken",
+        "lastName": "Adams",
+        "car": "2020 Honda Civic",
+        "dropoff": "2023-03-03",
+        "pickup": "2023-03-03",
+        "age": 22
+    },
+    {
+        "firstName": "Joe",
+        "lastName": "Fresh",
+        "car": "2020 Honda Civic",
+        "dropoff": "2023-03-03",
+        "pickup": "2023-03-03",
+        "age": 18
+    },
+    {
+        "firstName": "Jack",
+        "lastName": "Black",
+        "car": "2020 Honda Civic",
+        "dropoff": "2023-03-03",
+        "pickup": "2023-03-03",
+        "age": 21
+    },
+    {
+        "firstName": "JJ",
+        "lastName": "Brown",
+        "car": "2022 Ford Explorer",
+        "dropoff": "2023-03-03",
+        "pickup": "2023-03-03",
+        "age": 31
+    },
+    {
+        "firstName": "Sara",
+        "lastName": "Gene",
+        "car": "2022 Ford Explorer",
+        "dropoff": "2023-03-03",
+        "pickup": "2023-03-03",
+        "age": 39
+    }
+]
