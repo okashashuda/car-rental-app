@@ -165,4 +165,13 @@ public class BookingLogTest {
         testBookingList.clearBookingList();
         assertEquals(0, testBookingList.getBookingList().size());
     }
+
+    @Test
+    public void testPrintLog() {
+        EventLog.getInstance().logEvent(new Event("test"));
+        BookingLog.printLog(EventLog.getInstance());
+        for (Event next : EventLog.getInstance()) {
+            assertEquals("test", next.getDescription());
+        }
+    }
 }

@@ -125,6 +125,7 @@ public class BookingLog {
         EventLog.getInstance().logEvent(new Event("ALL BOOKINGS CLEARED."));
     }
 
+    //prints all the Events (to console) that were logged into the EventLog
     public static void printLog(EventLog el) {
         for (Event next : el) {
             System.out.println(next.toString() + "\n");

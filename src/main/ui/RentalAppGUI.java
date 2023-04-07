@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import static model.BookingLog.printLog;
 
