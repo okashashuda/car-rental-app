@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 //if a booking is selected, it will remove it from the BookingLog panel in the GUI
 public class CancelButtonListener implements ActionListener {
 
+    //fields
     private final RentalAppGUI rentalAppGUI;
     private JButton button;
 

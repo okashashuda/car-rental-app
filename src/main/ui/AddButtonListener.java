@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 //then it will clear all the fields for the next booking to be created
 public class AddButtonListener implements ActionListener {
 
+    //fields
     private final RentalAppGUI rentalAppGUI;
     private JButton button;
 

@@ -16,6 +16,7 @@ import persistence.JsonWriter;
 //for every booking in the BookingLog panel in the GUI, it will convert it to JSON format, then write it to file
 public class SaveButtonListener implements ActionListener {
 
+    //fields
     private static final String DESTINATION = "./data/bookinglog.json";
     private RentalAppGUI rentalAppGUI;
     private JButton button;

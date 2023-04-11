@@ -17,6 +17,7 @@ import static model.BookingLog.printLog;
 //GUI for a car rental application
 public class RentalAppGUI extends JFrame {
 
+    //fields
     protected JList<String> bookingLog;
     protected DefaultListModel listModel;
 

@@ -50,3 +50,13 @@ JsonSerializationDemo*
 - You can locate my visual component by filling out all fields, clicking 'Add' which will open a pop-up window with an image
 - You can save the state of my application by clicking the 'Save' button which will write all the data to the booking.json file
 - You can reload the state of my application by clicking the 'Load' button (upon restart) which will read all the data from the booking.json file and add to the panel on the left
+
+## Phase 4: Task 2
+Tue Apr 11 00:31:33 PDT 2023 </br>
+BOOKING ADDED.
+
+Tue Apr 11 00:32:00 PDT 2023 </br>
+BOOKING ADDED.
+
+Tue Apr 11 00:32:05 PDT 2023 </br>
+BOOKING REMOVED.

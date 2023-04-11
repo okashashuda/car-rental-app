@@ -15,6 +15,7 @@ import java.util.Scanner;
 //console-based ui for a car rental application
 public class RentalApp {
 
+    //fields
     private static final String DESTINATION = "./data/bookinglog.json";
     private LocalDate pickup;
     private LocalDate dropoff;

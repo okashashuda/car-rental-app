@@ -15,6 +15,7 @@ import java.io.IOException;
 //for every booking in the file, it will read it, convert it to Booking, then add it to BookingLog panel in the GUI
 public class LoadButtonListener implements ActionListener {
 
+    //fields
     private static final String DESTINATION = "./data/bookinglog.json";
     private RentalAppGUI rentalAppGUI;
     private JButton button;
