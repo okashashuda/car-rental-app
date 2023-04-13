@@ -11,8 +11,10 @@ import java.util.Iterator;
  * to the single instance of the EventLog.
  */
 //copied directly from EventLog in AlarmSystem project, fixed to resolve checkstyle issues
+//every Event is added to an EventLog which is printed to console after
 public class EventLog implements Iterable<Event> {
     /** the only EventLog in the system (Singleton Design Pattern) */
+    //fields
     private static EventLog theLog;
     private Collection<Event> events;
 
@@ -20,6 +22,7 @@ public class EventLog implements Iterable<Event> {
      * Prevent external construction.
      * (Singleton Design Pattern).
      */
+    //CONSTRUCTOR: creates empty EventLog.
     private EventLog() {
         events = new ArrayList<Event>();
     }
@@ -30,6 +33,7 @@ public class EventLog implements Iterable<Event> {
      * (Singleton Design Pattern)
      * @return  instance of EventLog
      */
+    //get instance of EventLog, create one if it doesn't already exist.
     public static EventLog getInstance() {
         if (theLog == null) {
             theLog = new EventLog();
@@ -42,6 +46,7 @@ public class EventLog implements Iterable<Event> {
      * Adds an event to the event log.
      * @param e the event to be added
      */
+    //add an event to the EventLog
     public void logEvent(Event e) {
         events.add(e);
     }
@@ -49,6 +54,7 @@ public class EventLog implements Iterable<Event> {
     /**
      * Clears the event log and logs the event.
      */
+    //clear the event log and logs the event
     public void clear() {
         events.clear();
         logEvent(new Event("Event log cleared."));

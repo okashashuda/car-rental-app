@@ -7,7 +7,10 @@ import java.util.Date;
  * Represents an alarm system event.
  */
 //copied directly from Event in AlarmSystem project, fixed to resolve checkstyle issues
+//represents an Event that happens when the program is run, gets recorded with a description and exact time it happened
 public class Event {
+
+    //fields
     private static final int HASH_CONSTANT = 13;
     private Date dateLogged;
     private String description;
@@ -17,6 +20,7 @@ public class Event {
      * and the current date/time stamp.
      * @param description  a description of the event
      */
+    //CONSTRUCTOR: creates event with a description
     public Event(String description) {
         dateLogged = Calendar.getInstance().getTime();
         this.description = description;
@@ -26,6 +30,7 @@ public class Event {
      * Gets the date of this event (includes time).
      * @return  the date of the event
      */
+    //get the date of this event (including exact time)
     public Date getDate() {
         return dateLogged;
     }
@@ -34,6 +39,7 @@ public class Event {
      * Gets the description of this event.
      * @return  the description of the event
      */
+    //get the description of this event
     public String getDescription() {
         return description;
     }
