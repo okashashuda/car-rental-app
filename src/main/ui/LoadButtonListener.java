@@ -2,9 +2,9 @@ package ui;
 
 import model.Booking;
 import model.BookingLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import persistence.JsonReader;
+
+import org.json.JSONArray;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

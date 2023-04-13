@@ -1,16 +1,17 @@
 package ui;
 
+import model.Booking;
+import model.BookingLog;
+import persistence.JsonWriter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import model.Booking;
-import model.BookingLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import persistence.JsonWriter;
 
 //this is what happens when the 'Save' button in the GUI is clicked
 //for every booking in the BookingLog panel in the GUI, it will convert it to JSON format, then write it to file

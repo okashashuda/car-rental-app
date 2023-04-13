@@ -1,7 +1,5 @@
 package ui;
 
-import model.Booking;
-import model.BookingLog;
 import model.EventLog;
 
 import java.awt.*;

@@ -3,11 +3,14 @@ package persistence;
 import model.Booking;
 import model.BookingLog;
 import model.Rental;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonReaderTest {

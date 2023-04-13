@@ -1,6 +1,7 @@
 package persistence;
 
 import model.BookingLog;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
