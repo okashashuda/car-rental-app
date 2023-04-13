@@ -13,8 +13,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-//this is what happens when the 'Save' button in the GUI is clicked
-//for every booking in the BookingLog panel in the GUI, it will convert it to JSON format, then write it to file
+//represents the sequence of events that happen when the 'Save' button in the GUI is clicked
 public class SaveButtonListener implements ActionListener {
 
     //fields
@@ -29,6 +28,7 @@ public class SaveButtonListener implements ActionListener {
         this.button = button;
     }
 
+    //for each booking in BookingLog panel in GUI, convert to JSON format, then saves/writes booking to file
     //EFFECTS: saves booking to file
     @Override
     public void actionPerformed(ActionEvent e) {

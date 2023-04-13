@@ -11,8 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-//this is what happens with the 'Load' button in the GUI is clicked
-//for every booking in the file, it will read it, convert it to Booking, then add it to BookingLog panel in the GUI
+//represents the sequence of events that happen when the 'Load' button in the GUI is clicked
 public class LoadButtonListener implements ActionListener {
 
     //fields
@@ -27,7 +26,8 @@ public class LoadButtonListener implements ActionListener {
         this.button = button;
     }
 
-    //EFFECTS: reads booking from file
+    //loads/reads booking from file, convert each to Booking type, then add it to BookingLog panel in the GUI
+    //EFFECTS: loads booking from file
     @Override
     public void actionPerformed(ActionEvent e) {
         try {

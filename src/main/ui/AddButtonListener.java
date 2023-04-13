@@ -9,9 +9,7 @@ import java.awt.event.ActionListener;
 
 //this part of the project is based on the ListDemo project from:
 //          https://docs.oracle.com/javase/tutorial/uiswing/components/list.html
-//this is what happens when the 'Add' button in the GUI is clicked
-//if none of the fields are empty, it will add to BookingLog panel in the GUI
-//then it will clear all the fields for the next booking to be created
+//represents the sequence of events that happen when the 'Add' button in the GUI is clicked
 public class AddButtonListener implements ActionListener {
 
     //fields
@@ -30,7 +28,7 @@ public class AddButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int index = rentalAppGUI.bookingLog.getSelectedIndex();
 
-        //checks if any of the fields are empty. if yes, displays message box
+        //checks if any of the fields are empty. if yes, displays message box.
         if (rentalAppGUI.firstNameField.getText().isEmpty() || rentalAppGUI.lastNameField.getText().isEmpty()
                 || rentalAppGUI.ageField.getText().isEmpty() || rentalAppGUI.pickupDateField.getText().isEmpty()
                 || rentalAppGUI.dropoffDateField.getText().isEmpty()) {
@@ -38,7 +36,7 @@ public class AddButtonListener implements ActionListener {
         } else {
             Booking booking = getBooking();
 
-            //image appears when booking is successfully to BookingList
+            //pop-up window with image appears when booking is successfully to BookingList
             visualComponent();
 
             //add the booking to the booking list in the GUI
@@ -46,6 +44,7 @@ public class AddButtonListener implements ActionListener {
             rentalAppGUI.listModel.addElement(
                     rentalAppGUI.firstNameField.getText() + " " + rentalAppGUI.lastNameField.getText());
 
+            //clears every entry box for next booking to be created
             rentalAppGUI.firstNameField.setText("");
             rentalAppGUI.lastNameField.setText("");
             rentalAppGUI.ageField.setText("");
