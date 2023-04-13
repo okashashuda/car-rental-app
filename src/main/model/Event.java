@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * Represents an alarm system event.
  */
+//copied directly from Event in AlarmSystem project, fixed to resolve checkstyle issues
 public class Event {
     private static final int HASH_CONSTANT = 13;
     private Date dateLogged;
